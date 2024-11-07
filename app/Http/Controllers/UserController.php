@@ -48,6 +48,13 @@ class UserController extends Controller
         return view('users.edit', compact('user'));
     }
 
+    // Mostrar un registro específico 
+        public function show(User $user)
+    {
+        return view('users.show', compact('user')); // Retorna la vista con los detalles del usuario
+    }
+
+
     // Actualizar un usuario
     public function update(Request $request, $id)
     {

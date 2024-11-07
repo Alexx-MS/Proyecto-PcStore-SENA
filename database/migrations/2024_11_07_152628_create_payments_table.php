@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('authorization_number');
             $table->string('billing_address');
             $table->string('transaction_number');
+            //alex cuando lo veas dime si le pongo un tamaño a cada dato o no 
             $table->timestamps();
     });
     }

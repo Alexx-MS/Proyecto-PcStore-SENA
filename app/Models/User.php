@@ -15,4 +15,10 @@ class User extends Model
         'address', 'postal_code', 'birth_date', 'user_type', 'history', 'registration_date'
     ];
 
+    // Relacion Uno a Muchos
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
 }

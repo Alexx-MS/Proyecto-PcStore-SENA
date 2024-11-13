@@ -7,6 +7,8 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OpinionController;
+use App\Http\Controllers\DetailController;
+
 
 
 Route::get('/', function () {
@@ -33,6 +35,7 @@ Route::resource('products', ProductController::class);
 Route::resource('opinions', OpinionController::class);
 
 // Rutas de Detalles(Details)
+Route::resource('details', DetailController::class);
 
 
 

@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('availability', 255); // Availability status
             $table->text('technical_specifications'); // Technical specifications of the product
             $table->string('brand', 255); // Brand of the product
-            //$table->foreignId('category_id')->constrained('categories')->onDelete('cascade'); // Foreign key to categories table
+            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade'); // Foreign key to categories table
             $table->timestamps();
         });
     }

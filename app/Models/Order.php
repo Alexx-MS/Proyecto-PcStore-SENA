@@ -19,4 +19,16 @@ class Order extends Model
         'estimated_delivery_date',
         // 'user_id' // Descomentar si necesitas relación con usuario
     ];
+
+public function user()
+{
+    return $this->belongsTo(User::class);
+}
+
+// Relacion Uno a Muchos
+public function detail() 
+{
+    return $this->hasMany(Detail::class);
+}
+
 }

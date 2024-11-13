@@ -16,4 +16,10 @@ class opinion extends Model
         'date',
         'usefulness',
     ];
+    
+    // Relacion Uno a Muchos
+    public function product () 
+    {
+        return $this->hasMany(Product::class);
+    }
 }

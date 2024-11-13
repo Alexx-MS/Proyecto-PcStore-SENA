@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('opinions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('product_id');  // Clave foránea
             $table->integer('rating');  // Calificación
             $table->text('comment');  // Comentario
             $table->date('date');  // Fecha
             $table->integer('usefulness');  // Utilidad
+            $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
             $table->timestamps();
         });
     }

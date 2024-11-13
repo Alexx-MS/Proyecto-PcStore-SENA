@@ -20,7 +20,9 @@ return new class extends Migration
             $table->text('content'); // Content or details of the order
             $table->string('address', 255); // Delivery address
             $table->date('estimated_delivery_date'); // Estimated delivery date
-            //$table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            /*$table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');*/
             $table->timestamps();
         });
     }

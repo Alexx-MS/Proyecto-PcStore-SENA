@@ -18,7 +18,6 @@ return new class extends Migration
             $table->text('comment');  // Comentario
             $table->date('date');  // Fecha
             $table->integer('usefulness');  // Utilidad
-            //aqui hace falta la llave foranea de product
             $table->timestamps();
         });
     }

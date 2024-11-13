@@ -7,25 +7,20 @@ use Illuminate\Http\Request;
 
 class DetailController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    // Mostrar todos los detalles
     public function index()
     {
-        //
+        $details = Detail::all();
+        return view('details.index', compact('details'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    // Mostras formulario para crear un nuevo detalle
     public function create()
     {
-        //
+        return view('details.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    // Guardar un nuevo detalle
     public function store(Request $request)
     {
         //

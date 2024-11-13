@@ -9,14 +9,16 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up(): void 
     {
         Schema::create('details', function (Blueprint $table) {
             $table->id();
-            
+            $table->integer('quantity'); // Cantidad de elementos
+            $table->text('observations')->nullable(); // Observaciones, permite valores nulos
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.

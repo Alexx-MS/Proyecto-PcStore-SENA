@@ -12,8 +12,7 @@
             font-family: Arial, sans-serif;
         }
         body {
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(30, 30, 30, 0.9)), url('images/fondo.jpg');
-
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(30, 30, 30, 0.9)), url("{{ asset('images/fondo.jpeg') }}");
             background-size: cover;
             background-position: center;
             background-attachment: fixed;

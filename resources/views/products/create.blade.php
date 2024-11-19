@@ -1,3 +1,4 @@
+
 <h1>Create New Product</h1>
 
 <Style>
@@ -138,6 +139,11 @@ textarea.form-control {
     <div class="form-group">
         <label for="brand">Marca</label>
         <input type="text" name="brand" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+        <label for="brand">Categoria</label>
+        <input type="numeric" name="category_id" class="form-control" required>
     </div>
     <button type="submit" class="btn btn-primary">Crear Producto</button>
 </form>

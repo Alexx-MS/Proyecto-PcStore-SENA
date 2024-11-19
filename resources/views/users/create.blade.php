@@ -171,11 +171,6 @@
             </div>
 
             <div class="form-control">
-                <label for="history">Historial:</label>
-                <textarea id="history" name="history" placeholder="Opcional..."></textarea>
-            </div>
-
-            <div class="form-control">
                 <label for="registration_date">Fecha de Registro:</label>
                 <input type="date" id="registration_date" name="registration_date" required>
             </div>

@@ -70,4 +70,28 @@ class CategoryController extends Controller
         return redirect()->route('categories.index')->with('success', 'Category deleted successfully.');
     }
 
+        public function showCategory($slug)
+    {
+        $categories = [
+            'tarjetas-graficas' => 'Tarjetas Gráficas',
+            'procesadores' => 'Procesadores',
+            'mouses' => 'Mouses',
+            'motherboards' => 'Motherboards',
+            'monitores' => 'Monitores',
+            'laptops' => 'Laptops',
+        ];
+
+        // Validar si la categoría existe
+        if (!array_key_exists($slug, $categories)) {
+            abort(404, 'Categoría no encontrada');
+        }
+
+        // Enviar datos a la vista de la categoría específica
+        return view('categories.show', [
+            'category' => $categories[$slug],
+            'slug' => $slug,
+            'categories' => $categories, // También puedes enviar las categorías si son necesarias
+        ]);
+    }
+
 }

@@ -253,7 +253,7 @@
 
     <div class="header">
         <div class="logo">
-            <img src="logo.jpeg" alt="logo">
+            <img src="/images/Logo.jpeg" alt="logo">
         </div>
 
         <div class="nav">
@@ -261,7 +261,7 @@
             <div class="category">
                 <a href="#">Categoría</a>
                 <div class="categories">
-                    <a href="#">Tarjetas Gráficas</a>
+                    <a href="{{ route('categories.index') }}">Tarjetas Gráficas</a>
                     <a href="#">Procesadores</a>
                     <a href="#">Mouses</a>
                     <a href="#">Motherboards</a>

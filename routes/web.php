@@ -10,12 +10,11 @@ use App\Http\Controllers\OpinionController;
 use App\Http\Controllers\DetailController;
 
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function () {return view('welcome');
 });
 
 // Ruta de Home
-Route::get('/', function () {return view('welcome');})->name('home');
+Route::get('/home', function () {return view('home.home');});
 
 // Rutas de Usuarios(Users)
 Route::resource('users', UserController::class);

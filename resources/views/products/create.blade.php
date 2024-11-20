@@ -1,94 +1,130 @@
 
-<h1>Create New Product</h1>
+<h1>Crear Nuevo Producto</h1>
 
 <Style>
+    /* General Styles */
     body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f6f9;
-    color: #333;
-    display: flex;
-    justify-content: center;
-    padding-top: 40px;
-}
+        font-family: 'Roboto', sans-serif;
+        background-color: #1e1e2f; /* Fondo oscuro tecnológico */
+        color: #f5f5f5; /* Texto claro */
+        margin: 0;
+        padding: 20px;
+    }
 
-.container {
-    max-width: 600px;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-}
+    h1 {
+        text-align: center;
+        color: #00c7ff; /* Azul eléctrico */
+        font-size: 2.8em;
+        margin-bottom: 20px;
+    }
 
-h1 {
-    font-size: 24px;
-    font-weight: bold;
-    color: #2c3e50;
-    text-align: center;
-    margin-bottom: 20px;
-}
+    /* Error Alert Styles */
+    .alert {
+        background-color: #ff5252;
+        color: #fff;
+        padding: 15px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
 
-.alert {
-    color: #d9534f;
-    background-color: #f8d7da;
-    border: 1px solid #f5c6cb;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-}
+    .alert ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
 
-.alert ul {
-    padding: 0;
-    margin: 0;
-    list-style-type: none;
-}
+    .alert li {
+        margin: 5px 0;
+    }
 
-.form-group {
-    margin-bottom: 15px;
-}
+    /* Form Styles */
+    form {
+        background-color: #29293d; /* Fondo del formulario */
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        max-width: 600px;
+        margin: 0 auto;
+    }
 
-.form-group label {
-    font-weight: bold;
-    color: #555;
-    display: block;
-    margin-bottom: 5px;
-}
+    .form-group {
+        margin-bottom: 15px;
+    }
 
-.form-control {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-    transition: border-color 0.3s;
-}
+    label {
+        display: block;
+        font-weight: bold;
+        color: #ffcd38; /* Amarillo para destacar etiquetas */
+        margin-bottom: 8px;
+    }
 
-.form-control:focus {
-    border-color: #3498db;
-    outline: none;
-}
-
-textarea.form-control {
-    resize: vertical;
-    min-height: 100px;
-}
-
-.btn {
+input[type="text"],
+input[type="number"],
+input[type="date"],
+textarea {
     width: 100%;
     padding: 10px;
     font-size: 16px;
+    border: 1px solid #39394d;
+    border-radius: 5px;
+    background-color: #1e1e2f;
+    color: #f5f5f5;
+}
+
+textarea {
+    height: 100px;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: #00c7ff; /* Azul eléctrico para foco */
+    box-shadow: 0 0 5px rgba(0, 199, 255, 0.5);
+}
+
+/* Button Styles */
+.btn {
+    display: inline-block;
+    padding: 12px 18px;
+    font-size: 16px;
+    text-align: center;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
+    font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: all 0.3s ease;
+    color: #fff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 .btn-primary {
-    background-color: #3498db;
-    color: #fff;
+    background-color: #00c7ff; /* Azul principal */
 }
 
 .btn-primary:hover {
-    background-color: #2980b9;
+    background-color: #0078a3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    form {
+        padding: 15px;
+    }
+
+    label {
+        font-size: 14px;
+    }
+
+    input,
+    textarea {
+        font-size: 14px;
+    }
+
+    .btn {
+        font-size: 14px;
+        padding: 10px 14px;
+    }
 }
 
 </Style>

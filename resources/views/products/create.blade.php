@@ -177,9 +177,12 @@ textarea:focus {
         <input type="text" name="brand" class="form-control" required>
     </div>
 
-    <div class="form-group">
-        <label for="brand">Categoria</label>
-        <input type="numeric" name="category_id" class="form-control" required>
-    </div>
+    <label for="category_id">Categoría:</label>
+    <select name="category_id" id="category_id" required>
+        @foreach ($categories as $category)
+            <option value="{{ $category->id }}">{{ $category->name }}</option>
+        @endforeach
+    </select>
+    
     <button type="submit" class="btn btn-primary">Crear Producto</button>
 </form>

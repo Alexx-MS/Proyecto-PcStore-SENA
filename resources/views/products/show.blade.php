@@ -76,7 +76,7 @@ div strong {
     </Style>
 </head>
 
-<h1>Product Details</h1>
+<h1>Detalles del Producto</h1>
 
 <div><strong>Nombre:</strong> {{ $product->name }}</div>
 <div><strong>Modelo:</strong> {{ $product->model }}</div>

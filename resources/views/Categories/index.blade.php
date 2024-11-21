@@ -115,6 +115,7 @@ form {
     display: inline;
 }
 
+
     </Style>
 </head>
 <body>
@@ -142,6 +143,7 @@ form {
                     <td>{{ $category->name }}</td>
                     <td>{{ $category->description }}</td>  
                     <td>
+                        <a href="{{ route('categories.show', $category) }}">ver</a>
                         <a href="{{ route('categories.edit', $category) }}">Editar</a>
                         <form action="{{ route('categories.destroy', $category) }}" method="POST" style="display:inline;">
                             @csrf

@@ -17,16 +17,19 @@ class Product extends Model
         'release_date', 'availability', 'technical_specifications', 'brand', 'category_id'
     ];
 
+    // Relación inversa con detalles
     public function detail () 
     {
         return $this->belongsTo(Detail::class);
     }
 
+    // Relación inversa con opiniones
     public function opinion () 
     {
         return $this->belongsTo(Opinion::class);
     }
 
+    // Relación inversa con categorías
     public function category () 
     {
         return $this->belongsTo(Category::class);

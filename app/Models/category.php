@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class category extends Model
+class Category extends Model
 {
     use HasFactory;
 
     protected $fillable = ['name', 'description'];
     
     // Relacion Uno a Muchos
-    public function product () 
+    public function products () 
     {
         return $this->hasMany(Product::class);
     }

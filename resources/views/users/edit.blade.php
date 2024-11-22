@@ -60,11 +60,6 @@
         </div>
 
         <div>
-            <label for="history">Historia</label>
-            <textarea id="history" name="history" rows="4">{{ $user->history }}</textarea>
-        </div>
-
-        <div>
             <label for="registration_date">Fecha de Registro</label>
             <input type="date" id="registration_date" name="registration_date" value="{{ $user->registration_date }}" required>
         </div>

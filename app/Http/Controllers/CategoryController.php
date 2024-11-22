@@ -18,6 +18,7 @@ class CategoryController extends Controller
     // Mostrar formulario para crear una nueva categoría
     public function create()
     {
+        $categories = Category::all();
         return view('categories.create');
     }
     
@@ -37,7 +38,7 @@ class CategoryController extends Controller
     // Mostrar una categoría específica
     public function show($id)
     {
-        $category = Category::findOrFail($id);
+        $category = Category::with('products')->findOrFail($id); // Carga la categoría con sus productos relacionados
         return view('categories.show', compact('category'));
     }
 
@@ -68,6 +69,30 @@ class CategoryController extends Controller
         $category = Category::findOrFail($id);
         $category->delete();
         return redirect()->route('categories.index')->with('success', 'Category deleted successfully.');
+    }
+
+        public function showCategory($slug)
+    {
+        $categories = [
+            'tarjetas-graficas' => 'Tarjetas Gráficas',
+            'procesadores' => 'Procesadores',
+            'mouses' => 'Mouses',
+            'motherboards' => 'Motherboards',
+            'monitores' => 'Monitores',
+            'laptops' => 'Laptops',
+        ];
+
+        // Validar si la categoría existe
+        if (!array_key_exists($slug, $categories)) {
+            abort(404, 'Categoría no encontrada');
+        }
+
+        // Enviar datos a la vista de la categoría específica
+        return view('categories.show', [
+            'category' => $categories[$slug],
+            'slug' => $slug,
+            'categories' => $categories, // También puedes enviar las categorías si son necesarias
+        ]);
     }
 
 }

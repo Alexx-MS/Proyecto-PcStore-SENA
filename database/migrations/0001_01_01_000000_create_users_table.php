@@ -22,7 +22,6 @@ return new class extends Migration
             $table->bigInteger('postal_code');
             $table->date('birth_date');
             $table->enum('user_type', ['ADMIN', 'CLIENT']);
-            $table->text('history');
             $table->date('registration_date');
             $table->rememberToken();
             $table->timestamps();

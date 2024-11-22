@@ -33,7 +33,6 @@ class UserController extends Controller
             'postal_code' => 'required|numeric',
             'birth_date' => 'required|date',
             'user_type' => 'required|in:ADMIN,CLIENT',
-            'history' => 'nullable|string',
             'registration_date' => 'required|date',
         ]);
 
@@ -68,7 +67,6 @@ class UserController extends Controller
             'postal_code' => 'required|numeric',
             'birth_date' => 'required|date',
             'user_type' => 'required|in:ADMIN,CLIENT',
-            'history' => 'nullable|string',
             'registration_date' => 'required|date',
         ]);
 

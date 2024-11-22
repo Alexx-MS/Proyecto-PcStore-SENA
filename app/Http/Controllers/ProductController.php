@@ -43,12 +43,14 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {
+
         return view('products.show', compact('product'));
     }
 
     public function edit(Product $product)
     {
-        return view('products.edit', compact('product'));
+        $categories = Category::all();
+        return view('products.edit', compact('product','categories'));
     }
 
     public function update(Request $request, Product $product)
@@ -65,9 +67,9 @@ class ProductController extends Controller
             'brand' => 'required',
         ]);
 
+        $categories = Category::all();
         $product->update($request->all());
-
-        return redirect()->route('products.index')->with('success', 'Product updated successfully.');
+        return redirect()->route('products.index', compact('product','categories'))->with('success', 'Product updated successfully.');
     }
 
     public function destroy(Product $product)

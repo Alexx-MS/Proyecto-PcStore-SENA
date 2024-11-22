@@ -15,15 +15,10 @@
             <img src="{{ asset('images/logo.jpeg') }}" alt="Logo de PCSTORE">
         </div>
 
-        <div class="nav">
-            <a href="{{ view('home/home') }}">Inicio</a>
-            <div class="categories">
-    @foreach ($categories as $slug => $name)
-        <a href="{{ route('category', $slug) }}">{{ $name }}</a>
-    @endforeach
+        
 </div>
 
-            <a href="{{ route('offers') }}">Ofertas</a>
+            <a href="{{ view('offers') }}">Ofertas</a>
         </div>
 
         <div class="search-bar">

@@ -288,7 +288,7 @@
             <!-- Producto 1 -->
             <a href="Product1.html" class="product">
                 <img src="https://cdnx.jumpseller.com/tienda-gamer-medellin/image/47208261/1024.png?1711994221" alt="Nvidia Geforce RTX 4090">
-                <p class="product-name">Nvidia Geforce RTX 4090</p>
+                <a href="{{ route('categories.show')}}">Nvidia Geforce RTX 4090</a>
                 <div class="price">$8.990.000</div>
             </a>
     

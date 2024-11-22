@@ -14,7 +14,7 @@ Route::get('/', function () {return view('welcome');
 });
 
 // Ruta de Home
-Route::get('/home', function () {return view('home.home');})->name('home');
+Route::get('home', function () {return view('home.home');})->name('home');
 
 // Rutas de Usuarios(Users)
 Route::resource('users', UserController::class);

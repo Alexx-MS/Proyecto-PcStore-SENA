@@ -4,250 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PCSTORE - Componentes de PC</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
-
-        body {
-            background-color: #f4f4f4;
-            color: #333;
-        }
-
-        .header {
-            background-color: #1a1a1a;
-            color: #fff;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .header .logo img {
-            height: 50px;
-        }
-
-        .nav {
-            display: flex;
-            gap: 30px;
-            position: relative;
-        }
-
-        .nav a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 1.1em;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-
-        .nav a:hover {
-            color: #ff5e5e;
-        }
-
-        /* Menú de Categorías */
-        .category {
-            position: relative;
-        }
-
-        .categories {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: #333;
-            width: 200px;
-            border-radius: 8px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-            z-index: 10;
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-            transform: translateY(-10px);
-        }
-
-        .category:hover .categories {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .categories a {
-            color: #fff;
-            padding: 12px 20px;
-            display: block;
-            text-decoration: none;
-            transition: background-color 0.3s;
-            border-bottom: 1px solid #444;
-        }
-
-        .categories a:hover {
-            background-color: #ff5e5e;
-        }
-
-        /* Barra de búsqueda */
-        .search-bar {
-            background-color: #333;
-            border-radius: 25px;
-            display: flex;
-            align-items: center;
-            padding: 8px 20px;
-            gap: 10px;
-            max-width: 350px;
-            width: 100%;
-        }
-
-        .search-bar input {
-            border: none;
-            background: none;
-            outline: none;
-            color: #fff;
-            font-size: 1em;
-            flex: 1;
-        }
-
-        .search-bar button {
-            background: none;
-            border: none;
-            font-size: 1.3em;
-            cursor: pointer;
-            color: #ff5e5e;
-        }
-
-        .cart-button {
-            background-color: #ff5e5e;
-            padding: 10px 20px;
-            border-radius: 25px;
-            color: #fff;
-            font-size: 1.1em;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .cart-button img {
-            width: 20px;
-            height: 20px;
-        }
-
-        .content {
-            background: linear-gradient(135deg, #e0e0e0, #ffffff);
-            padding: 50px 20px;
-            text-align: center;
-            color: #333;
-        }
-
-        .content h1 {
-            font-size: 2.5em;
-            margin-bottom: 30px;
-            color: #333;
-        }
-
-        .products {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            justify-content: center;
-        }
-
-        .product {
-            background-color: #fff;
-            border-radius: 15px;
-            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
-            width: 200px;
-            padding: 20px;
-            position: relative;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .product:hover {
-            transform: scale(1.1);
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-        }
-
-        .product img {
-            max-width: 100%;
-            border-radius: 10px;
-        }
-
-        .product-name {
-            font-size: 1.2em;
-            margin-top: 15px;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .price {
-            background: #333;
-            color: #fff;
-            font-size: 1.2em;
-            font-weight: bold;
-            padding: 8px 20px;
-            border-radius: 20px;
-            position: absolute;
-            bottom: 15px;
-            left: 50%;
-            transform: translateX(-50%);
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .presupuesto {
-            background-color: #1a1a1a;
-            color: #fff;
-            padding: 40px;
-            margin: 50px auto;
-            text-align: center;
-            border-radius: 10px;
-            max-width: 400px;
-            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .presupuesto h2 {
-            font-size: 2em;
-            margin-bottom: 15px;
-        }
-
-        .presupuesto p {
-            font-size: 1em;
-            margin-bottom: 25px;
-        }
-
-        .presupuesto button {
-            background-color: #ff5e5e;
-            color: #fff;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 1.1em;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-
-        .presupuesto button:hover {
-            background-color: #ff8e8e;
-        }
-
-        .footer {
-            background-color: #8b0000;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-            font-weight: bold;
-            font-size: 1.2em;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .footer:hover {
-            background-color: #a50000;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('css/home.css')}}">
 </head>
 <body>
 
@@ -257,16 +14,12 @@
         </div>
 
         <div class="nav">
-            <a href="#">Inicio</a>
-            <div class="category">
-                <a href="#">Categoría</a>
+            <a href="{{ route('home') }}">Inicio</a>
+            <div class="category">Categorías
                 <div class="categories">
-                    <a href="{{ route('categories.index') }}">Tarjetas Gráficas</a>
-                    <a href="#">Procesadores</a>
-                    <a href="#">Mouses</a>
-                    <a href="#">Motherboards</a>
-                    <a href="#">Monitores</a>
-                    <a href="#">Laptops</a>
+                    @foreach ($categories as $category )
+                    <a href="{{ $category->id }}">{{ category->name }}</a>
+                    @endforeach
                 </div>
             </div>
             <a href="#">Ofertas</a>
@@ -288,7 +41,7 @@
             <!-- Producto 1 -->
             <a href="Product1.html" class="product">
                 <img src="https://cdnx.jumpseller.com/tienda-gamer-medellin/image/47208261/1024.png?1711994221" alt="Nvidia Geforce RTX 4090">
-                <a href="{{ route('categories.show')}}">Nvidia Geforce RTX 4090</a>
+                <a href="{{ route('categories.show{category}' )}}">Nvidia Geforce RTX 4090</a>
                 <div class="price">$8.990.000</div>
             </a>
     

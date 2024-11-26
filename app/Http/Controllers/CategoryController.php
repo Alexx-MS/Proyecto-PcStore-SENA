@@ -68,7 +68,7 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
         $category->delete();
-        return redirect()->route('categories.index')->with('success', 'Category deleted successfully.');
+        return redirect()->route('categories.index')->with('success', 'Categoría eliminada correctamente.');
     }
 
         public function showCategory($slug)
@@ -91,7 +91,7 @@ class CategoryController extends Controller
         return view('categories.show', [
             'category' => $categories[$slug],
             'slug' => $slug,
-            'categories' => $categories, // También puedes enviar las categorías si son necesarias
+            'categories' => $categories, // enviar las categorías si son necesarias
         ]);
     }
 

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('name', 100); // Nombre de la categoría, con un límite de 100 caracteres
+            $table->string('slug')->unique(); // Slug unico para cada categoría
             $table->text('description')->nullable(); // Descripción de la categoría, campo opcional
             $table->timestamps();
         });

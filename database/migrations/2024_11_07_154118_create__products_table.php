@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name', 255); // Product name
+            $table->string('slug')->unique(); // Slug para productos / Slug for Products
             $table->string('model', 255); // Product model
             $table->bigInteger('price'); //biginteger for COP 
             $table->text('description'); // Description of the product

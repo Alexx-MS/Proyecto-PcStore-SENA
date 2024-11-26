@@ -24,7 +24,7 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $validate = $request->validate([
             'name' => 'required',
             'model' => 'required',
             'price' => 'required|integer',
@@ -36,14 +36,14 @@ class ProductController extends Controller
             'brand' => 'required',
         ]);
 
-        Product::create($request->all());
+        Product::create($validate);
 
-        return redirect()->route('products.index')->with('success', 'Product created successfully.');
+        return redirect()->route('products.index')->with('success', 'Producto creado correctamente .');
     }
 
-    public function show(Product $product)
+    public function show($slug)
     {
-
+        $product = Product::where('slug', $slug)->firstOrFail();
         return view('products.show', compact('product'));
     }
 

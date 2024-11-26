@@ -25,14 +25,14 @@ class CategoryController extends Controller
     // Guardar una nueva categoría
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
+        $validated = $request->validate([
+            'name' => 'required|string|max:255|unique:categories,name',
             'description' => 'nullable|string',
         ]);
-
-        Category::create($request->all());
-
-        return redirect()->route('categories.index')->with('success', 'Category created successfully.');
+    
+        Category::create($validated);
+    
+        return redirect()->route('categories.index')->with('success', 'Categoría creada correctamente.');
     }
     
     // Mostrar una categoría específica
@@ -60,7 +60,7 @@ class CategoryController extends Controller
         $category = Category::findOrFail($id);
         $category->update($request->all());
 
-        return redirect()->route('categories.index')->with('success', 'Category updated successfully.');
+        return redirect()->route('categories.index')->with('success', 'Categoria actualizada correctamente.');
     }
 
     // Eliminar una categoría

@@ -14,18 +14,11 @@
         <div class="logo">
             <img src="{{ asset('images/logo.jpeg') }}" alt="Logo de PCSTORE">
         </div>
-
-        
-</div>
-
-            <a href="{{ view('offers') }}">Ofertas</a>
-        </div>
-
+        <a href="{{ view('offers') }}">Ofertas</a>
         <div class="search-bar">
             <input type="text" placeholder="Busca miles de componentes...">
             <button>🔍</button>
         </div>
-
         <button class="cart-button">
             <img src="{{ asset('images/cart-icon.png') }}" alt="Carrito">
             Carrito
@@ -34,13 +27,11 @@
 
     <!-- Contenido principal -->
     <div class="content">
-        @yield('content')
+        @yield('content') <!-- Aquí se inyectará el contenido de las vistas que extiendan este layout -->
     </div>
 
     <!-- Pie de pagina -->
-    <div class="footer">
-        @include('partials.footer')
-    </div>
+    @include('partials.footer') <!-- Aquí solo incluyes el pie de página desde el parcial -->
 
 </body>
 </html>

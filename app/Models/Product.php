@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -16,6 +17,28 @@ class Product extends Model
         'name', 'model', 'price', 'description', 'generation', 
         'release_date', 'availability', 'technical_specifications', 'brand', 'category_id'
     ];
+
+    // Evento para generar el slug automáticamente
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::saving(function ($product) {
+            if (empty($product->slug)) {
+                $slug = Str::slug($product->name);
+
+                $originalSlug = $slug;
+                $counter = 1;
+
+                while (Product::where('slug', $slug)->exists()) {
+                    $slug = $originalSlug . '-' . $counter;
+                    $counter++;
+                }
+
+                $product->slug = $slug;
+            }
+        });
+    }
 
     // Relación inversa con detalles
     public function detail () 

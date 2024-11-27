@@ -19,7 +19,7 @@ class CategoryController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('categories.create');
+        return view('categories.create', compact('categories'));
     }
     
     // Guardar una nueva categoría
@@ -38,7 +38,7 @@ class CategoryController extends Controller
     // Mostrar una categoría específica
     public function show($slug)
     {
-        $category = Category::with('products')->findOrFail($slug); // Carga la categoría con sus productos relacionados
+        $category = Category::with('products','categories')->findOrFail($slug); // Carga la categoría con sus productos relacionados
         return view('categories.show', compact('category'));
     }
 

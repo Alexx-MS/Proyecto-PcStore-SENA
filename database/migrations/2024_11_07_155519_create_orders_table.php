@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->integer('quantity'); // Quantity of items in the order
-            $table->bigInteger('total amount'); // Total amount for COP 
+            $table->bigInteger('total amount'); // Total amount for COP (hay que arreglar esta migracion) 
             $table->string('status', 255); // Order status
             $table->timestamp('date_time'); // Date and time of the order
             $table->text('content'); // Content or details of the order

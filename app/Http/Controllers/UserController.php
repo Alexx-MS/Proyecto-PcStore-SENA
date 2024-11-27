@@ -73,7 +73,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->update($validated);
 
-        return redirect()->route('users.index')->with('success', 'User updated successfully.');
+        return redirect()->route('users.index')->with('success', 'Usuario actualizado exitosamente.');
     }
 
     // Eliminar un usuario
@@ -82,6 +82,6 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
 
-        return redirect()->route('users.index')->with('success', 'User deleted successfully.');
+        return redirect()->route('users.index')->with('success', 'User eliminado correctamente.');
     }
 }

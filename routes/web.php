@@ -20,8 +20,8 @@ Route::get('home', function () {return view('home.home');})->name('home');
 Route::resource('users', UserController::class);
 
 // Rutas de Categorias(Categories)
-Route::resource('categories', CategoryController::class);
-Route::get('/category/{slug}', [CategoryController::class, 'showCategory'])->name('category');
+Route::resource('categories', CategoryController::class)->parameters(['products' => 'slug' ]);
+//Route::get('/category/{slug}', [CategoryController::class, 'showCategory'])->name('category');
 
 // Rutas de Pagos(Payments)
 Route::resource('payments', PaymentController::class);

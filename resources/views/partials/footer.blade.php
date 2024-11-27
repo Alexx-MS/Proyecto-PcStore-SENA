@@ -1,20 +1,20 @@
 <footer class="bg-dark text-white py-4">
     <div class="container">
         <div class="row">
-            <div class="col-md-4 mb-3">
+            <div class="col-md-4 mb-3 text-center text-md-start">
                 <h5>PC Store</h5>
                 <p>Tu tienda confiable para los mejores componentes de PC. Encuentra calidad y soporte en un solo lugar.</p>
             </div>
-            <div class="col-md-4 mb-3">
+            <div class="col-md-4 mb-3 text-center text-md-start">
                 <h5>Enlaces Útiles</h5>
                 <ul class="list-unstyled">
-                    <li><a href="{{route ('home')}}" class="text-white text-decoration-none">Inicio</a></li>
+                    <li><a href="{{ route('home') }}" class="text-white text-decoration-none">Inicio</a></li>
                     <li><a href="/productos" class="text-white text-decoration-none">Productos</a></li>
                     <li><a href="/ofertas" class="text-white text-decoration-none">Ofertas</a></li>
                     <li><a href="/contacto" class="text-white text-decoration-none">Contacto</a></li>
                 </ul>
             </div>
-            <div class="col-md-4 mb-3">
+            <div class="col-md-4 mb-3 text-center text-md-start">
                 <h5>Contáctanos</h5>
                 <p>
                     <i class="bi bi-telephone-fill"></i> Teléfono: +57 300 123 4567<br>
@@ -32,5 +32,4 @@
             <p>&copy; 2024 PC Store. Todos los derechos reservados.</p>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.js"></script>
 </footer>

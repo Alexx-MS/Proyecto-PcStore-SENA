@@ -36,16 +36,16 @@ class CategoryController extends Controller
     }
     
     // Mostrar una categoría específica
-    public function show($id)
+    public function show($slug)
     {
-        $category = Category::with('products')->findOrFail($id); // Carga la categoría con sus productos relacionados
+        $category = Category::with('products')->findOrFail($slug); // Carga la categoría con sus productos relacionados
         return view('categories.show', compact('category'));
     }
 
     // Mostrar formulario para editar una categoría
-    public function edit($id)
+    public function edit($slug)
     {
-        $category = Category::findOrFail($id);
+        $category = Category::findOrFail($slug);
         return view('categories.edit', compact('category'));
     }
 

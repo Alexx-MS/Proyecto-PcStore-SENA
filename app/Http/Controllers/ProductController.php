@@ -34,6 +34,8 @@ class ProductController extends Controller
             'availability' => 'required',
             'technical_specifications' => 'required',
             'brand' => 'required',
+            'category_id' => 'required|exists:categories,id',
+
         ]);
 
         Product::create($validate);

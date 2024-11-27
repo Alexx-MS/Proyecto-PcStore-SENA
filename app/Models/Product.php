@@ -12,10 +12,10 @@ class Product extends Model
 
     use HasFactory;
     
-    // Permitir la asignación masiva solo en estos campos
+    // Permitir la asignación masiva en estos campos
     protected $fillable = [
         'name', 'model', 'price', 'description', 'generation', 
-        'release_date', 'availability', 'technical_specifications', 'brand', 'category_id'
+        'release_date', 'availability', 'technical_specifications', 'brand', 'category_id', 'slug'
     ];
 
     // Evento para generar el slug automáticamente

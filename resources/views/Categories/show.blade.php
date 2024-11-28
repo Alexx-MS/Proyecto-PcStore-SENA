@@ -7,7 +7,7 @@
 </head>
 <body>
     <!-- Mostrar detalles de la categoría -->
-    <h1>Detalles de la Categoría: {{ $category->name }}</h1>
+    <h1>Detalles de la Categoría: {{ $category->name}}</h1>
 
     <p><strong>Nombre:</strong> {{ $category->name }}</p>
     <p><strong>Slug:</strong> {{ $category->slug }}</p>

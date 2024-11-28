@@ -15,13 +15,27 @@
 
         <div class="nav">
             <a href="{{ route('home') }}">Inicio</a>
-            <div class="category">Categorías
-                <div class="categories">
-                    @foreach ($categories as $category )
-                    <a href="{{ $category->id }}">{{ category->name }}</a>
-                    @endforeach
-                </div>
+
+            <div class="categories">
+                <ul>
+                    <li>
+                        @foreach ($categories as $category)
+                        <div class="category">
+                            <h2>{{ $category->name }}</h2>
+                            <a href="{{ route('categories.show', $category->slug) }}" class="btn btn-primary">
+                                Ver producto
+                            </a>
+                        </div>
+                        @endforeach
+                    </li>
+                </ul>
             </div>
+    </div>
+
+        </div>
+    </div>
+
+    </div>
             <a href="#">Ofertas</a>
         </div>
 
@@ -41,7 +55,7 @@
             <!-- Producto 1 -->
             <a href="Product1.html" class="product">
                 <img src="https://cdnx.jumpseller.com/tienda-gamer-medellin/image/47208261/1024.png?1711994221" alt="Nvidia Geforce RTX 4090">
-                <a href="{{ route('categories.show{category}' )}}">Nvidia Geforce RTX 4090</a>
+                <p>Nvidia Geforce RTX 4090</p>
                 <div class="price">$8.990.000</div>
             </a>
     

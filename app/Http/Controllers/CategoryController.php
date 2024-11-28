@@ -71,6 +71,12 @@ class CategoryController extends Controller
         return redirect()->route('categories.index')->with('success', 'Categoría eliminada correctamente.');
     }
 
+    public function listCategories($id)
+    {
+        $categories = Category::findOrFail($id);
+        return redirect()->route('categories.show', compact('categories'));
+    }
+
     //     public function showCategory($slug)
     // {
     //     $categories = [
@@ -94,5 +100,6 @@ class CategoryController extends Controller
     //         'categories' => $categories, // enviar las categorías si son necesarias
     //     ]);
     // }
+    
 
 }

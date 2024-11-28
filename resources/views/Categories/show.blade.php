@@ -31,7 +31,7 @@
         </ul>
     @endif
 
-    <!-- Otras categorías (si deseas seguir mostrando otras categorías) -->
+    <!-- Otras categorías -->
     <h2>Otras Categorías</h2>
     {{--  <ul>
         @foreach ($categories as $categoryItem)

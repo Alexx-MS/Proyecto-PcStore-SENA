@@ -14,6 +14,7 @@
         </div>
 
         <div class="nav">
+<<<<<<< Updated upstream
             <a href="{{ route('home') }}">Inicio</a>
 
             <div class="categories">
@@ -29,6 +30,15 @@
                         @endforeach
                     </li>
                 </ul>
+=======
+            <a href="{{ route('home.home') }}">Inicio</a>
+            <div class="category">Categorías
+                <div class="categories">
+                    @foreach ($categories as $category )
+                    <a href="{{ $category->id }}">{{ category->name }}</a>
+                    @endforeach
+                </div>
+>>>>>>> Stashed changes
             </div>
     </div>
 

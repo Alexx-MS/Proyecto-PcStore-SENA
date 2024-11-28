@@ -38,8 +38,7 @@ Route::resource('opinions', OpinionController::class);
 // Rutas de Detalles(Details)
 Route::resource('details', DetailController::class);
 
-// Rutas Ofertas(offers)
-
+route::get('products/{product}/edit',[ProductController::class,'edit'])->name('products.edit');
 
 
 

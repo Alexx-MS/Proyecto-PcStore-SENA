@@ -6,8 +6,6 @@ use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
-
-
 class ProductController extends Controller
 {
     public function index()
@@ -18,7 +16,7 @@ class ProductController extends Controller
 
     public function create()
     {
-        $categories = Category::all(); // Carga todas las categorias
+        $categories = Category::all(); // Carga todas las categorías
         return view('products.create', compact('categories'));
     }
 
@@ -35,12 +33,11 @@ class ProductController extends Controller
             'technical_specifications' => 'required',
             'brand' => 'required',
             'category_id' => 'required|exists:categories,id',
-
         ]);
 
         Product::create($validate);
 
-        return redirect()->route('products.index')->with('success', 'Producto creado correctamente .');
+        return redirect()->route('products.index')->with('success', 'Producto creado correctamente.');
     }
 
     public function show($slug)
@@ -51,10 +48,11 @@ class ProductController extends Controller
 
     public function edit($slug)
     {
-        $product = Product::where('slug', $slug)->firstOrFail();
-        $categories = Category::all();
-        return view('products.edit', compact('product','categories'));
+        $product = Product::where('slug', $slug)->firstOrFail(); // Carga el producto por el slug
+        $categories = Category::all(); // Carga todas las categorías
+        return view('products.edit', compact('product', 'categories'));
     }
+    
 
     public function update(Request $request, $slug)
     {
@@ -70,11 +68,10 @@ class ProductController extends Controller
             'brand' => 'required',
         ]);
 
-        $categories = Category::all();
         $product = Product::where('slug', $slug)->firstOrFail();
-        $product->update($validate); 
+        $product->update($validate);
 
-        return redirect()->route('products.index', compact('product','categories'))->with('success', 'Producto actualizado correctamente.');
+        return redirect()->route('products.index')->with('success', 'Producto actualizado correctamente.');
     }
 
     public function destroy(Product $product)

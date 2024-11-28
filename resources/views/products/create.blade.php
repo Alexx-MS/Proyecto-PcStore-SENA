@@ -54,7 +54,7 @@
         </div>
         <div class="col-md-12">
             <label for="category_id" class="form-label">Categoría</label>
-            <select name="category_id" id="category_id" class="form-select" required>
+            <select name="category_id" id="category_id" class="form-select">
                 @foreach ($categories as $category)
                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach

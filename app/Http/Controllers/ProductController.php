@@ -18,7 +18,7 @@ class ProductController extends Controller
 
     public function create()
     {
-        $categories = Category::all();
+        $categories = Category::all(); // Carga todas las categorias
         return view('products.create', compact('categories'));
     }
 
@@ -49,15 +49,16 @@ class ProductController extends Controller
         return view('products.show', compact('product'));
     }
 
-    public function edit(Product $product)
+    public function edit($slug)
     {
+        $product = Product::where('slug', $slug)->firstOrFail();
         $categories = Category::all();
         return view('products.edit', compact('product','categories'));
     }
 
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $slug)
     {
-        $request->validate([
+        $validate = $request->validate([
             'name' => 'required',
             'model' => 'required',
             'price' => 'required|integer',
@@ -70,13 +71,15 @@ class ProductController extends Controller
         ]);
 
         $categories = Category::all();
-        $product->update($request->all());
-        return redirect()->route('products.index', compact('product','categories'))->with('success', 'Product updated successfully.');
+        $product = Product::where('slug', $slug)->firstOrFail();
+        $product->update($validate); 
+
+        return redirect()->route('products.index', compact('product','categories'))->with('success', 'Producto actualizado correctamente.');
     }
 
     public function destroy(Product $product)
     {
         $product->delete();
-        return redirect()->route('products.index')->with('success', 'Product deleted successfully.');
+        return redirect()->route('products.index')->with('success', 'Producto eliminado exitosamente.');
     }
 }

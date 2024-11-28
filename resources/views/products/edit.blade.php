@@ -140,10 +140,9 @@
     </div>
 @endif
 
-<form action="{{ route('products.update', $product) }}" method="POST">
+<form action="{{ route('products.update', $product->slug) }}" method="POST">
     @csrf
     @method('PUT')
-    <!-- Aquí repites los mismos campos que en create.blade.php pero con valores predeterminados -->
     <div class="form-group">
         <label for="name">Nombre</label>
         <input type="text" name="name" class="form-control" value="{{ $product->name }}" required>
@@ -158,7 +157,7 @@
     </div>
     <div class="form-group">
         <label for="description">Descripcion</label>
-        <textarea name="description" class="form-control" value="{{ $product->description }}" required></textarea>
+        <textarea name="description" class="form-control" required>{{ $product->description }}</textarea>
     </div>
     <div class="form-group">
         <label for="generation">Generacion</label>
@@ -174,7 +173,7 @@
     </div>
     <div class="form-group">
         <label for="technical_specifications">Ficha Tecnica</label>
-        <textarea name="technical_specifications" class="form-control" value="{{ $product->technical_specifications }}" required></textarea>
+        <textarea name="technical_specifications" class="form-control" required>{{ $product->technical_specifications }}</textarea>
     </div>
     <div class="form-group">
         <label for="brand">Marca</label>
@@ -184,9 +183,12 @@
     <label for="category_id">Categoría:</label>
     <select name="category_id" id="category_id" required>
         @foreach ($categories as $category)
-            <option value="{{ $category->id }}">{{ $category->name }}</option>
+            <option value="{{ $category->id }}" {{ $product->category_id == $category->id ? 'selected' : '' }}>
+                {{ $category->name }}
+            </option>
         @endforeach
     </select>
+    
     
     <button type="submit" class="btn btn-primary">Actualizar Producto</button>
 </form>

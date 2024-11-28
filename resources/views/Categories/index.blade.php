@@ -143,8 +143,8 @@ form {
                     <td>{{ $category->name }}</td>
                     <td>{{ $category->description }}</td>  
                     <td>
-                        <a href="{{ route('categories.show', $category) }}">ver</a>
-                        <a href="{{ route('categories.edit', $category) }}">Editar</a>
+                        <a href="{{ route('categories.show', $category->slug) }}">ver</a>
+                        <a href="{{ route('categories.edit', $category->slug) }}">Editar</a>
                         <form action="{{ route('categories.destroy', $category) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')

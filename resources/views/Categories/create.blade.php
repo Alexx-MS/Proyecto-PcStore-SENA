@@ -44,10 +44,17 @@
         form {
             background: rgba(20, 20, 30, 0.9);
             padding: 20px 30px;
-            border-radius: 12px;
+            border-radius: 20px; /* Bordes redondeados */
             box-shadow: 0 0 15px rgba(255, 75, 92, 0.8);
             width: 100%;
             max-width: 400px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Efecto hover en el formulario */
+        form:hover {
+            transform: scale(1.05); /* Efecto de zoom */
+            box-shadow: 0 0 25px rgba(255, 75, 92, 1);
         }
 
         form div {
@@ -66,7 +73,7 @@
             width: 100%;
             padding: 12px;
             border: 1px solid #ff4b5c;
-            border-radius: 6px;
+            border-radius: 10px; /* Bordes más suaves */
             font-size: 16px;
             background: rgba(20, 20, 30, 0.9);
             color: #fff;
@@ -93,7 +100,7 @@
             background-color: #ff4b5c;
             color: #000;
             border: none;
-            border-radius: 6px;
+            border-radius: 10px;
             font-size: 18px;
             font-weight: bold;
             cursor: pointer;

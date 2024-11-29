@@ -12,42 +12,50 @@
         <div class="logo">
             <img src="/images/Logo.jpeg" alt="logo">
         </div>
-
+        
         <div class="nav">
-<<<<<<< Updated upstream
             <a href="{{ route('home') }}">Inicio</a>
 
-            <div class="categories">
-                <ul>
-                    <li>
-                        @foreach ($categories as $category)
-                        <div class="category">
-                            <h2>{{ $category->name }}</h2>
-                            <a href="{{ route('categories.show', $category->slug) }}" class="btn btn-primary">
-                                Ver producto
+            <div class="categories-dropdown">
+                <button class="dropdown-toggle">Categorías</button>
+                <ul class="dropdown-menu">
+                    @foreach ($categories as $category)
+                        <li>
+                            <a href="{{ route('categories.show', $category->slug) }}">
+                                {{ $category->name }}
                             </a>
-                        </div>
-                        @endforeach
-                    </li>
-                </ul>
-=======
-            <a href="{{ route('home.home') }}">Inicio</a>
-            <div class="category">Categorías
-                <div class="categories">
-                    @foreach ($categories as $category )
-                    <a href="{{ $category->id }}">{{ category->name }}</a>
+                        </li>
                     @endforeach
-                </div>
->>>>>>> Stashed changes
+                </ul>
             </div>
-    </div>
-
         </div>
     </div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Seleccionamos los elementos del DOM
+            const toggle = document.querySelector('.dropdown-toggle'); // Botón del menú
+            const menu = document.querySelector('.dropdown-menu'); // Menú desplegable
+    
+            // Evento para mostrar/ocultar el menú al hacer clic en el botón
+            toggle.addEventListener('click', function() {
+                menu.classList.toggle('show'); // Agrega o quita la clase 'show'
+            });
+    
+            // Evento para cerrar el menú si hacemos clic fuera de él
+            document.addEventListener('click', function(event) {
+                // Verificar si el clic fue fuera del botón o del menú
+                if (!toggle.contains(event.target) && !menu.contains(event.target)) {
+                    menu.classList.remove('show'); // Oculta el menú
+                }
+            });
+        });
+    </script>
+    
+
     </div>
-            <a href="#">Ofertas</a>
-        </div>
+        <a href="#">Ofertas</a>
+    </div>
 
         <div class="search-bar">
             <input type="text" placeholder="Busca miles de componentes...">

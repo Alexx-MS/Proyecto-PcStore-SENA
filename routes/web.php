@@ -11,16 +11,11 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 
 
-Route::get('/', function () {return view('welcome');});
+// Route::get('/', function () {return view('welcome');});
 
-// Ruta de Home
-<<<<<<< Updated upstream
+// Rutas Home
 Route::get('home', [HomeController::class, 'index'])->name('home');
 // Route::get('home', function () {return view('home.home');})->name('home');
-=======
-// Route::get('home', function () {return view('home.home');})->name('home');
-Route::resource('home', CategoryController::class[]);
->>>>>>> Stashed changes
 
 // Rutas de Usuarios(Users)
 Route::resource('users', UserController::class);

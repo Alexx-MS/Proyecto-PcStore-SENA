@@ -240,3 +240,43 @@ body {
 .footer:hover {
     background-color: #a50000;
 }
+
+/* Contenedor del menú desplegable */
+.categories-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Menú desplegable oculto por defecto */
+.dropdown-menu {
+    display: none; /* Oculto inicialmente */
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    z-index: 1000;
+    width: 200px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Elementos del menú */
+.dropdown-menu li {
+    padding: 10px;
+}
+
+.dropdown-menu li a {
+    text-decoration: none;
+    color: black;
+    display: block;
+}
+
+.dropdown-menu li:hover {
+    background-color: #f0f0f0;
+}
+
+/* Mostrar el menú al activar */
+.dropdown-menu.show {
+    display: block;
+}

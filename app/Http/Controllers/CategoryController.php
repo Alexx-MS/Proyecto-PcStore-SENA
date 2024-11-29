@@ -71,25 +71,12 @@ class CategoryController extends Controller
         return redirect()->route('categories.index')->with('success', 'Categoría eliminada correctamente.');
     }
 
-<<<<<<< Updated upstream
-    public function listCategories($id)
+    public function listCategories()
     {
-        $categories = Category::findOrFail($id);
+        $categories = Category::findOrFail();
         return redirect()->route('categories.show', compact('categories'));
     }
 
-=======
-    public function listCategories() 
-    {
-        $categories = Category::all();
-        return view('home', compact('categories'));
-    }
-
-
-
-
-
->>>>>>> Stashed changes
     //     public function showCategory($slug)
     // {
     //     $categories = [

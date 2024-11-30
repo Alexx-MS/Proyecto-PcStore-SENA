@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 use App\Models\Category;
+
 
 
 class CategoryController extends Controller
@@ -75,6 +77,15 @@ class CategoryController extends Controller
     {
         $categories = Category::findOrFail();
         return redirect()->route('categories.show', compact('categories'));
+    }
+
+    // Pasamos las categorías a todas las vistas que usen el layout
+    public function boot()
+    {
+        View::composer('layouts.app', function ($view) {
+            $categories = Category::all(); 
+            $view->with('categories', $categories);
+        });
     }
 
     //     public function showCategory($slug)

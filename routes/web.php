@@ -14,7 +14,7 @@ use App\Http\Controllers\CategoryController;
 // Route::get('/', function () {return view('welcome');});
 
 // Rutas Home
-Route::get('home', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 // Route::get('home', function () {return view('home.home');})->name('home');
 
 // Rutas de Usuarios(Users)
@@ -32,6 +32,8 @@ Route::resource('orders', OrderController::class);
 
 // Rutas de Productos(Products)
 Route::resource('products', ProductController::class);
+Route::get('/product/{slug}', [ProductController::class, 'showToUser'])
+    ->name('products.showUser'); // Ruta para mostar productos para usuario(User)
 
 // Rutas de Opiniones(Opinions)
 Route::resource('opinions', OpinionController::class);
@@ -39,7 +41,7 @@ Route::resource('opinions', OpinionController::class);
 // Rutas de Detalles(Details)
 Route::resource('details', DetailController::class);
 
-route::get('products/{product}/edit',[ProductController::class,'edit'])->name('products.edit');
+//route::get('products/{product}/edit',[ProductController::class,'edit'])->name('products.edit');
 
 
 

@@ -29,6 +29,9 @@ Route::resource('payments', PaymentController::class);
 
 // Rutas de Pedidos(Orders)
 Route::resource('orders', OrderController::class);
+// Ruta para mostrar la lista de órdenes
+Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+
 
 // Rutas de Productos(Products)
 Route::resource('products', ProductController::class);

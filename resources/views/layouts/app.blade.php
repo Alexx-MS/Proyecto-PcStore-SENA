@@ -16,7 +16,7 @@
             <div class="logo">
                 <img src="{{ asset('images/logo.jpeg') }}" alt="Logo de PCSTORE" class="img-fluid" style="max-width: 150px;">
             </div>
-            <a href="{{ view('offers') }}" class="btn btn-primary">Ofertas</a>
+           
             <div class="search-bar d-flex flex-grow-1 mx-3">
                 <input type="text" class="form-control me-2" placeholder="Busca miles de componentes...">
                 <button class="btn btn-secondary">🔍</button>

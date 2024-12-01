@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Crear Detalle</title>
+    <style></style>
 </head>
 <body>
     <h1>Crear Nuevo Detalle</h1>

@@ -1,3 +1,141 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Reset de márgenes y padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fuentes globales */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #141414;
+    color: #fff;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style-type: none;
+}
+
+/* Estilos para el header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #1a1a1a;
+    border-bottom: 2px solid #d32f2f;
+}
+
+.header .logo img {
+    width: 150px;
+}
+
+.header .search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #333;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.header .search-bar input {
+    border: none;
+    padding: 5px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 5px;
+    width: 200px;
+}
+
+.header .search-bar button {
+    background-color: #d32f2f;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    margin-left: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.header .nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header .nav a {
+    color: #fff;
+    font-weight: 500;
+    padding: 10px;
+    transition: color 0.3s ease;
+}
+
+.header .nav a:hover {
+    color: #d32f2f;
+}
+
+.header .categories-dropdown {
+    position: relative;
+}
+
+.header .categories-dropdown .dropdown-toggle {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.header .categories-dropdown .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #333;
+    width: 200px;
+    padding: 10px 0;
+    border-radius: 5px;
+}
+
+.header .categories-dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.header .categories-dropdown .dropdown-menu li {
+    padding: 10px;
+}
+
+.header .categories-dropdown .dropdown-menu li a {
+    color: #fff;
+    padding: 8px 15px;
+}
+
+.header .categories-dropdown .dropdown-menu li a:hover {
+    background-color: #d32f2f;
+}
+
+/* Estilos para el contenido principal */
+.main-content {
+    padding: 20px;
+}
+
+/* Footer */
+.footer {
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    border-top: 2px solid #d32f2f;
+}
+
+.footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}

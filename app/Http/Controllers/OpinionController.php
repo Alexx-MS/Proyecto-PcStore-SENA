@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Opinion;
 use Illuminate\Http\Request;
+use App\Models\Product;
 
 class OpinionController extends Controller
 {
@@ -18,20 +19,27 @@ class OpinionController extends Controller
         return view('opinions.create');
     }
 
-    public function store(Request $request)
+    public function store(Request $request, Product $product)
     {
+        // Validación de los datos
         $request->validate([
-            'product_id' => 'required|exists:products,id',
-            'rating' => 'required|integer|min:1|max:5',
-            'comment' => 'required',
-            'date' => 'required|date',
-            'usefulness' => 'required|integer|min:0',
+            'rating' => 'nullable|integer|between:1,5', // Calificación opcional, si se incluye debe estar entre 1 y 5
+            'comment' => 'nullable|string|max:500', // Comentario opcional
+            'usefulness' => 'nullable|boolean', // Utilidad opcional
         ]);
 
-        Opinion::create($request->all());
+        // Crear la opinión asociada al producto
+        $product->opinions()->create([
+            'rating' => $request->rating ?? null, // Si no se llena, se guarda como null
+            'comment' => $request->comment, // Si no se llena, se guarda como null
+            'date' => now(), // Fecha automática (se asigna la fecha actual)
+            'usefulness' => $request->usefulness ?? false, // Si no se llena, se marca como no útil
+        ]);
 
-        return redirect()->route('opinions.index')->with('success', 'Opinion created successfully.');
+        // Redirigir o devolver una respuesta
+        return redirect()->route('products.show', $product)->with('success', 'Opinión agregada');
     }
+
 
     public function show(Opinion $opinion)
     {

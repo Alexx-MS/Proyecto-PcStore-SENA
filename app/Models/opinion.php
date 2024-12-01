@@ -20,6 +20,6 @@ class opinion extends Model
     // Relacion Uno a Muchos
     public function product () 
     {
-        return $this->hasMany(Product::class);
+        return $this->belongsTo(Product::class);
     }
 }

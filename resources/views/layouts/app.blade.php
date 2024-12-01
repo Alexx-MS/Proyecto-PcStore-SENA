@@ -3,39 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>PCSTORE - Componentes de PC</title>
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <title>PC Components Store</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}"> 
 </head>
 <body>
-
-    <!-- Cabecera -->
-    <header class="header container-fluid bg-light py-3">
-        <div class="d-flex align-items-center justify-content-between">
-            <div class="logo">
-                <img src="{{ asset('images/logo.jpeg') }}" alt="Logo de PCSTORE" class="img-fluid" style="max-width: 150px;">
-            </div>
-           
-            <div class="search-bar d-flex flex-grow-1 mx-3">
-                <input type="text" class="form-control me-2" placeholder="Busca miles de componentes...">
-                <button class="btn btn-secondary">🔍</button>
-            </div>
-            <button class="cart-button btn btn-warning d-flex align-items-center">
-                <img src="{{ asset('images/cart-icon.png') }}" alt="Carrito" class="me-2" style="max-width: 20px;">
-                Carrito
-            </button>
+    
+    <div class="header">
+        <div class="logo">
+            <img src="/images/Logo.jpeg" alt="logo">
         </div>
-    </header>
 
-    <!-- Contenido principal -->
-    <main class="content container mt-4">
+        <div class="search-bar">
+            <input type="text" placeholder="Busca miles de componentes...">
+            <button>🔍</button>
+        </div>
+
+        <div class="nav">
+            <a href="{{ route('home') }}">Inicio</a>
+            
+            <div class="categories-dropdown">
+                <button class="dropdown-toggle">Categorías</button>
+                <ul class="dropdown-menu">
+                    @foreach ($categories as $category)
+                        <li>
+                            <a href="{{ route('categories.show', $category->slug) }}">
+                                {{ $category->name }}
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+            
+            <li><a href="/carrito"><i class="fas fa-shopping-cart"></i></a>carrito</li>
+        </div>
+    </div>
+
+    <main class="main-content">
         @yield('content')
     </main>
 
-    <!-- Pie de página -->
-    @include('partials.footer')
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 PCStore - Todos los derechos reservados</p>
+        </div>
+    </footer>
 </body>
 </html>

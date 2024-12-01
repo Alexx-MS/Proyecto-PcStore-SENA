@@ -10,7 +10,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::all();
+        $products = Product::all();  
         return view('products.index', compact('products'));
     }
 
@@ -20,8 +20,9 @@ class ProductController extends Controller
         return view('products.create', compact('categories'));
     }
 
-    public function store(Request $request)
+        public function store(Request $request)
     {
+        // Validación de los datos
         $validate = $request->validate([
             'name' => 'required',
             'model' => 'required',
@@ -33,16 +34,26 @@ class ProductController extends Controller
             'technical_specifications' => 'required',
             'brand' => 'required',
             'category_id' => 'required|exists:categories,id',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif', // Validación de la imagen
         ]);
 
+        // Subir la imagen a Cloudinary si existe
+        if ($request->hasFile('image')) {
+            $uploadedFileUrl = cloudinary()->upload($request->file('image')->getRealPath())->getSecurePath();
+            $validate['image'] = $uploadedFileUrl; // Guardar la URL en el array validado
+        }
+
+        // Crear el producto con los datos validados
         Product::create($validate);
 
+        // Redirigir con un mensaje de éxito
         return redirect()->route('products.index')->with('success', 'Producto creado correctamente.');
     }
 
     public function show($slug)
     {
         $product = Product::where('slug', $slug)->firstOrFail();
+        $product->load('opinions');
         return view('products.show', compact('product'));
     }
 
@@ -78,5 +89,11 @@ class ProductController extends Controller
     {
         $product->delete();
         return redirect()->route('products.index')->with('success', 'Producto eliminado exitosamente.');
+    }
+
+    public function showToUser($slug) 
+    {
+        $product = Product::where('slug', $slug)->firstOrFail();
+        return view('products.showUser', compact('product'));
     }
 }

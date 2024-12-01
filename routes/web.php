@@ -1,20 +1,21 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\OrderController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\OpinionController;
 use App\Http\Controllers\DetailController;
+use App\Http\Controllers\OpinionController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 
 
-Route::get('/', function () {return view('welcome');
-});
+// Route::get('/', function () {return view('welcome');});
 
-// Ruta de Home
-Route::get('home', function () {return view('home.home');})->name('home');
+// Rutas Home
+Route::get('/', [HomeController::class, 'index'])->name('home');
+// Route::get('home', function () {return view('home.home');})->name('home');
 
 // Rutas de Usuarios(Users)
 Route::resource('users', UserController::class);
@@ -31,6 +32,8 @@ Route::resource('orders', OrderController::class);
 
 // Rutas de Productos(Products)
 Route::resource('products', ProductController::class);
+Route::get('/product/{slug}', [ProductController::class, 'showToUser'])
+    ->name('products.showUser'); // Ruta para mostar productos para usuario(User)
 
 // Rutas de Opiniones(Opinions)
 Route::resource('opinions', OpinionController::class);
@@ -38,7 +41,7 @@ Route::resource('opinions', OpinionController::class);
 // Rutas de Detalles(Details)
 Route::resource('details', DetailController::class);
 
-route::get('products/{product}/edit',[ProductController::class,'edit'])->name('products.edit');
+//route::get('products/{product}/edit',[ProductController::class,'edit'])->name('products.edit');
 
 
 

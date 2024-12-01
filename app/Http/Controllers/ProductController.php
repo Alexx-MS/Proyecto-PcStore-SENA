@@ -34,7 +34,7 @@ class ProductController extends Controller
             'technical_specifications' => 'required',
             'brand' => 'required',
             'category_id' => 'required|exists:categories,id',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validación de la imagen
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif', // Validación de la imagen
         ]);
 
         // Subir la imagen a Cloudinary si existe
@@ -53,6 +53,7 @@ class ProductController extends Controller
     public function show($slug)
     {
         $product = Product::where('slug', $slug)->firstOrFail();
+        $product->load('opinions');
         return view('products.show', compact('product'));
     }
 

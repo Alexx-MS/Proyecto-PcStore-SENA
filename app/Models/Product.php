@@ -48,9 +48,9 @@ class Product extends Model
     }
 
     // Relación inversa con opiniones
-    public function opinion () 
+    public function opinions () 
     {
-        return $this->belongsTo(Opinion::class);
+        return $this->hasMany(Opinion::class);
     }
 
     // Relación inversa con categorías

@@ -98,9 +98,9 @@
     </style>
 </head>
 <body>
-    <body>
         <h1>Detalles del Producto</h1>
-    
+
+        <img src="{{ $product->image }}" style="max-width: 100%; height: auto;">
         <div><strong>Nombre:</strong> {{ $product->name }}</div>
         <div><strong>Modelo:</strong> {{ $product->model }}</div>
         <div><strong>Precio:</strong> ${{ number_format($product->price, 2) }}</div>
@@ -116,7 +116,36 @@
         </div>
         <div><strong>Ficha Técnica:</strong> {{ $product->technical_specifications }}</div>
         <div><strong>Marca:</strong> {{ $product->brand }}</div>
-    </body>
-    
+
+        <!-- Enlace para ver las opiniones -->
+        <a href="#opiniones" class="btn btn-secondary">Ver Opiniones</a>
+        
+        <!-- Sección de Opiniones -->
+        <div id="opiniones" style="margin-top: 30px;">
+            <h3>Opiniones del Producto</h3>
+        
+            <!-- Mostrar las opiniones -->
+            @foreach ($product->opinions as $opinion)
+                <div class="opinion" style="background-color: #333; padding: 10px; margin-bottom: 10px;">
+                    <strong>{{ $opinion->user->name ?? 'Usuario Anónimo' }}</strong><br>
+                    Calificación: 
+                    @if ($opinion->rating)
+                        {{ $opinion->rating }} estrellas
+                    @else
+                        No calificado aún
+                    @endif
+                    <br>
+                    Comentario: <p>{{ $opinion->comment ?? 'No se proporcionó comentario.' }}</p>
+                    Fecha: {{ $opinion->date }} <br>
+                    Utilidad: 
+                    @if ($opinion->usefulness)
+                        <span style="color: green;">Útil</span>
+                    @else
+                        <span style="color: red;">No útil</span>
+                    @endif
+                    <br>
+                </div>
+            @endforeach
+        </div>
 </body>
 </html>

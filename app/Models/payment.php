@@ -2,12 +2,16 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class payment extends Model
 {
-    public function detail () 
-    {
-        return $this->belongsTo(Product::class);
-    }
+    use HasFactory;
+    
+      // Relación con Order
+      public function order()
+      {
+          return $this->hasOne(Order::class);
+      }
 }

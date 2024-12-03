@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name', 255); // Product name
             $table->string('slug')->unique(); // Slug para productos / Slug for Products
             $table->string('model', 255); // Product model
-            $table->bigInteger('price'); //biginteger for COP 
+            $table->decimal('price', 10, 2); // decimal for more precision
             $table->text('description'); // Description of the product
             $table->string('generation', 255); // Generation info
             $table->date('release_date'); // Release date of the product

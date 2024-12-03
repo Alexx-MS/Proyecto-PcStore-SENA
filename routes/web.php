@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
@@ -41,7 +42,25 @@ Route::resource('opinions', OpinionController::class);
 // Rutas de Detalles(Details)
 Route::resource('details', DetailController::class);
 
-//route::get('products/{product}/edit',[ProductController::class,'edit'])->name('products.edit');
+// Rutas de Carrito (Cart)
+Route::middleware('auth')->group(function () {
+    // Mostrar el carrito de compras
+    Route::get('/cart', [CartController::class, 'showCart'])->name('cart.show');
+
+    // Agregar productos al carrito
+    Route::post('/cart/add/{productId}', [CartController::class, 'addToCart'])->name('cart.add');
+
+    // Eliminar productos del carrito
+    Route::delete('/cart/remove/{productId}', [CartController::class, 'removeFromCart'])->name('cart.remove');
+
+    // Checkout - Crear orden
+    Route::get('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
+
+    // Crear pago
+    Route::get('/payment/create/{orderId}', [CartController::class, 'createPayment'])->name('payment.create');
+});
+
+
 
 
 

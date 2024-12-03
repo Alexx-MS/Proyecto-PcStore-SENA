@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->timestamp('date_time');
-            $table->bigInteger('total_amount');
+            $table->decimal('total_amount', 10,2);
             $table->string('payment_method');
             $table->string('authorization_number');
             $table->string('billing_address');

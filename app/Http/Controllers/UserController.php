@@ -7,20 +7,17 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    // Mostrar todos los usuarios
     public function index()
     {
         $users = User::all();
         return view('users.index', compact('users'));
     }
 
-    // Mostrar el formulario para crear un nuevo usuario
     public function create()
     {
         return view('users.create');
     }
 
-    // Guardar un nuevo usuario
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -39,22 +36,16 @@ class UserController extends Controller
         User::create($validated);
         return redirect()->route('users.index')->with('success', 'User created successfully.');
     }
-
-    // Mostrar el formulario para editar un usuario
     public function edit($id)
     {
         $user = User::findOrFail($id);
         return view('users.edit', compact('user'));
     }
-
-    // Mostrar un registro específico 
         public function show(User $user)
     {
-        return view('users.show', compact('user')); // Retorna la vista con los detalles del usuario
+        return view('users.show', compact('user'));
     }
 
-
-    // Actualizar un usuario
     public function update(Request $request, $id)
     {
         $validated = $request->validate([
@@ -76,7 +67,6 @@ class UserController extends Controller
         return redirect()->route('users.index')->with('success', 'Usuario actualizado exitosamente.');
     }
 
-    // Eliminar un usuario
     public function destroy($id)
     {
         $user = User::findOrFail($id);

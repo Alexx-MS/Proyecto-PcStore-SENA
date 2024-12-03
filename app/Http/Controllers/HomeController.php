@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -11,5 +12,8 @@ class HomeController extends Controller
     {
         $categories = Category::all();
         return view('home.home', compact('categories'));
+    
     }
+
 }
+

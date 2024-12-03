@@ -12,7 +12,6 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 
 
-// Route::get('/', function () {return view('welcome');});
 
 // Rutas Home
 Route::get('/', [HomeController::class, 'index'])->name('home');

@@ -13,16 +13,15 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->integer('quantity'); // Quantity of items in the order
-            $table->bigInteger('total amount'); // Total amount for COP (hay que arreglar esta migracion) 
-            $table->string('status', 255); // Order status
-            $table->timestamp('date_time'); // Date and time of the order
-            $table->text('content'); // Content or details of the order
-            $table->string('address', 255); // Delivery address
-            $table->date('estimated_delivery_date'); // Estimated delivery date
+            $table->integer('quantity'); // Total cantidad de productos en la orden
+            $table->decimal('total_amount', 10,2); // Total monto de la orden
+            $table->string('status'); // Estado de la orden
+            $table->timestamp('date_time'); // Fecha y hora de la orden
+            $table->text('content'); // Detalles de la orden
+            $table->string('address'); // Dirección de entrega
+            $table->date('estimated_delivery_date'); // Fecha estimada de entrega
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            /*$table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');*/
+            $table->foreignId('payment_id')->nullable()->constrained('payments')->onDelete('set null'); 
             $table->timestamps();
         });
     }

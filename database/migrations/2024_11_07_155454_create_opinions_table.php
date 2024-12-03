@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('opinions', function (Blueprint $table) {
             $table->id();
-            $table->integer('rating');  // Calificación
+            $table->integer('rating');  // Calificación de 1 a 5 (estrellas)
             $table->text('comment');  // Comentario
-            $table->date('date');  // Fecha
-            $table->integer('usefulness');  // Utilidad
-            $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
+            $table->date('date');  // Fecha en la que se deja la opinión
+            $table->boolean('usefulness')->default(false);  // Utilidad (true = útil, false = no útil)
+            $table->foreignId('product_id')->constrained('products')->onDelete('cascade');  // Relación con el producto
             $table->timestamps();
         });
     }

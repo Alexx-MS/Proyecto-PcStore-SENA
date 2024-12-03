@@ -23,9 +23,4 @@ class Detail extends Model
         return $this->hasMany(Product::class);
     }
 
-    // Relacion Uno a Muchos
-    public function payment () 
-    {
-        return $this->hasMany(Payment::class);
-    }
 }

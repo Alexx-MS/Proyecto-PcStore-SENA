@@ -15,7 +15,8 @@ class Product extends Model
     // Permitir la asignación masiva en estos campos
     protected $fillable = [
         'name', 'model', 'price', 'description', 'generation', 
-        'release_date', 'availability', 'technical_specifications', 'brand', 'category_id', 'slug'
+        'release_date', 'availability', 'technical_specifications', 'brand', 'category_id', 
+        'slug', 'image',
     ];
 
     // Evento para generar el slug automáticamente
@@ -47,9 +48,9 @@ class Product extends Model
     }
 
     // Relación inversa con opiniones
-    public function opinion () 
+    public function opinions () 
     {
-        return $this->belongsTo(Opinion::class);
+        return $this->hasMany(Opinion::class);
     }
 
     // Relación inversa con categorías

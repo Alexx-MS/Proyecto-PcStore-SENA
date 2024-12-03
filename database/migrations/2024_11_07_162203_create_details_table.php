@@ -17,7 +17,6 @@ return new class extends Migration
             $table->text('observations')->nullable(); // Observaciones, permite valores nulos
             $table->foreignId('order_id')->constrained('orders')->onDelete('cascade');
             $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
-            $table->foreignId('payment_id')->constrained('payments')->onDelete('cascade');
             $table->timestamps();
         });
     }

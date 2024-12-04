@@ -28,10 +28,10 @@
 
         .register-container {
             background: rgba(0, 0, 0, 0.7);
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-            max-width: 450px;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+            max-width: 500px;
             width: 100%;
             text-align: center;
             transition: transform 0.3s;
@@ -43,8 +43,9 @@
 
         .register-container h2 {
             color: #f8f9fa;
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            font-weight: bold;
         }
 
         .register-container img {
@@ -53,15 +54,16 @@
         }
 
         .form-control {
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             text-align: left;
             width: 100%;
         }
 
         .form-control label {
             display: block;
-            font-size: 0.9rem;
-            color: #adb5bd;
+            font-size: 1rem;
+            color: #e0e0e0;
+            margin-bottom: 0.5rem;
         }
 
         .form-control input,
@@ -71,38 +73,38 @@
             padding: 0.75rem;
             font-size: 1rem;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             outline: none;
             color: #333;
             background: #e9ecef;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, box-shadow 0.3s;
         }
 
         .form-control input:focus,
         .form-control select:focus,
         .form-control textarea:focus {
             background-color: #fff;
-            box-shadow: 0 0 5px #007bff;
+            box-shadow: 0 0 5px 3px rgba(255, 77, 77, 0.5); /* Rojo brillante */
         }
 
         .button-container {
-            margin-top: 1.5rem;
+            margin-top: 2rem;
         }
 
         .register-btn {
             width: 100%;
             padding: 0.75rem;
-            font-size: 1rem;
-            background-color: #007bff;
+            font-size: 1.1rem;
+            background-color: #FF4C4C;
             color: #fff;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
             transition: background-color 0.3s, transform 0.3s;
         }
 
         .register-btn:hover {
-            background-color: #0056b3;
+            background-color: #ff2a2a;
             transform: scale(1.05);
         }
 
@@ -112,6 +114,7 @@
             margin-top: 0.5rem;
             display: none;
         }
+
     </style>
 </head>
 <body>

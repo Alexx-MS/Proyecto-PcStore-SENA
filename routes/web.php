@@ -12,7 +12,6 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 
 
-// Route::get('/', function () {return view('welcome');});
 
 // Rutas Home
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -47,6 +46,9 @@ Route::resource('details', DetailController::class);
 
 // Rutas de Carrito (Cart)
 Route::middleware('auth')->group(function () {
+
+    Route::get('/cart/count', [CartController::class, 'getCartCount'])->name('cart.count');
+
     // Mostrar el carrito de compras
     Route::get('/cart', [CartController::class, 'showCart'])->name('cart.show');
 

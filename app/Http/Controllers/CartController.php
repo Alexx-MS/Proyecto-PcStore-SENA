@@ -129,4 +129,13 @@ class CartController extends Controller
 
         return redirect()->route('orders.history')->with('success', 'El pago fue exitoso y la orden ha sido procesada.');
     }
+
+        public function getCartCount()
+    {
+        $cart = session('cart', []);
+        $cartCount = collect($cart)->sum('quantity'); // Suma todas las cantidades en el carrito
+
+        return response()->json(['cartCount' => $cartCount]);
+    }
+
 }

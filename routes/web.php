@@ -46,6 +46,9 @@ Route::resource('details', DetailController::class);
 
 // Rutas de Carrito (Cart)
 Route::middleware('auth')->group(function () {
+
+    Route::get('/cart/count', [CartController::class, 'getCartCount'])->name('cart.count');
+
     // Mostrar el carrito de compras
     Route::get('/cart', [CartController::class, 'showCart'])->name('cart.show');
 

@@ -44,8 +44,12 @@ Route::resource('opinions', OpinionController::class);
 // Rutas de Detalles(Details)
 Route::resource('details', DetailController::class);
 
+// Rutas Login 
+Route::get('/login', function () {return view('login');})->name('login');
+
 // Rutas de Carrito (Cart)
-Route::middleware('auth')->group(function () {
+//Route::middleware('auth')->group(function () { });
+
 
     Route::get('/cart/count', [CartController::class, 'getCartCount'])->name('cart.count');
 
@@ -63,7 +67,6 @@ Route::middleware('auth')->group(function () {
 
     // Crear pago
     Route::get('/payment/create/{orderId}', [CartController::class, 'createPayment'])->name('payment.create');
-});
 
 
 

@@ -44,6 +44,9 @@ Route::resource('opinions', OpinionController::class);
 // Rutas de Detalles(Details)
 Route::resource('details', DetailController::class);
 
+// Rutas Login 
+Route::get('/login', function () {return view('login');})->name('login');
+
 // Rutas de Carrito (Cart)
 Route::middleware('auth')->group(function () {
 

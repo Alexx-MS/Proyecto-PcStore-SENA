@@ -35,7 +35,13 @@
                 </ul>
             </div>
             
-            <li><a href="/carrito"><i class="fas fa-shopping-cart"></i></a>carrito</li>
+            <script src="{{ asset('js/cart.js') }}"></script>
+            <a href="{{ route('cart.show') }}" class="btn btn-outline-light">
+                🛒 Carrito 
+                <span id="cart-count" class="badge bg-danger">{{ collect(session('cart', []))->sum('quantity') }}</span>
+            </a>
+            
+            
         </div>
     </div>
 

@@ -1,8 +1,122 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    /* General reset */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    /* Body */
+    body {
+        font-family: 'Roboto', sans-serif;
+        background: url('{{ asset('images/fondocrearproduct.jpg') }}') no-repeat center center fixed;
+        background-size: cover;
+        color: #333;
+        line-height: 1.6;
+    }
+
+    /* Contenedor del formulario */
+    .form-container {
+        background-color: rgba(255, 255, 255, 0.9); /* Fondo semi-transparente */
+        padding: 20px;
+        margin: 20px auto;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        max-width: 800px;
+    }
+
+    .form-container h1 {
+        font-size: 2rem;
+        color: #111;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    /* Estilo de los inputs */
+    .form-label {
+        font-size: 1rem;
+        color: #444;
+        margin-bottom: 8px;
+        display: block;
+    }
+
+    .form-control, .form-select {
+        width: 100%;
+        padding: 10px;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        transition: border-color 0.3s ease;
+    }
+
+    .form-control:focus, .form-select:focus {
+        border-color: #5cb85c;
+        outline: none;
+    }
+
+    /* Botón */
+    .btn-success {
+        background-color: #5cb85c;
+        border: none;
+        color: #fff;
+        padding: 10px 20px;
+        font-size: 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-success:hover {
+        background-color: #4cae4c;
+        transform: scale(1.05);
+    }
+
+    .btn-success:active {
+        transform: scale(1);
+    }
+
+    /* Alertas */
+    .alert {
+        margin-bottom: 20px;
+        padding: 15px;
+        border-radius: 5px;
+        font-size: 0.95rem;
+    }
+
+    .alert-danger {
+        color: #a94442;
+        background-color: #f2dede;
+        border-color: #ebccd1;
+    }
+
+    /* Espaciado entre inputs */
+    .row.g-3 > .col-md-6, 
+    .row.g-3 > .col-md-12 {
+        margin-bottom: 15px;
+    }
+
+    /* Responsividad */
+    @media (max-width: 768px) {
+        .form-container {
+            padding: 15px;
+        }
+
+        .form-label {
+            font-size: 0.9rem;
+        }
+
+        .btn-success {
+            font-size: 0.9rem;
+            padding: 8px 16px;
+        }
+    }
+</style>
+
 <div class="form-container container">
-    <h1 class="text-center mb-4">Editar Producto</h1>
+    <h1>Editar Producto</h1>
 
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -64,7 +178,7 @@
             </select>
         </div>
         <div class="col-md-12 text-center">
-            <button type="submit" class="btn btn-success">Editar Producto</button>
+            <button type="submit" class="btn-success">Editar Producto</button>
         </div>
     </form>
 </div>

@@ -237,7 +237,12 @@
 
             <!-- Botones de Acción -->
             <div class="btn-container">
-                <button class="btn">Añadir al Carrito</button>
+            <form action="{{ route('cart.add', ['productId' => $product->id]) }}" method="POST">
+                @csrf
+                <input type="number" name="quantity" value="1" min="1" required>
+                <button type="submit">Agregar al carrito</button>
+            </form>
+
                 <button class="btn">Comprar Ahora</button>
             </div>
         </div>

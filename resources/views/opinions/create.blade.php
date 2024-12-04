@@ -6,92 +6,109 @@
     <title>Add New Opinion</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #000;
-            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
             margin: 0;
             padding: 0;
         }
         header {
-            background-color: #d32f2f;
-            padding: 10px 20px;
+            background-color: #6200ea;
+            padding: 15px 20px;
             text-align: center;
         }
         header a {
-            color: #fff;
             text-decoration: none;
+            color: white;
+            font-size: 1.5em;
+            font-weight: bold;
         }
         h1 {
+            text-align: center;
             font-size: 2em;
-            margin-bottom: 20px;
+            color: #6200ea;
+            margin: 20px 0;
         }
         .form-container {
-            width: 50%;
+            max-width: 600px;
             margin: 20px auto;
-            background-color: #333;
+            background-color: white;
             padding: 20px;
-            border-radius: 8px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         .form-group {
             margin-bottom: 15px;
         }
         .form-group label {
-            font-size: 1.1em;
-            margin-bottom: 5px;
             display: block;
+            font-size: 1em;
+            margin-bottom: 5px;
+            color: #555;
         }
         .form-control {
             width: 100%;
             padding: 10px;
             font-size: 1em;
-            border: 1px solid #666;
-            border-radius: 4px;
-            background-color: #444;
-            color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            transition: border-color 0.3s ease;
         }
         .form-control:focus {
-            border-color: #d32f2f;
+            border-color: #6200ea;
             outline: none;
+            background-color: #fff;
         }
         .btn-primary {
-            background-color: #d32f2f;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 1.1em;
-        }
-        .btn-primary:hover {
-            background-color: #c62828;
-        }
-        .alert-danger {
-            background-color: #f44336;
+            display: block;
+            width: 100%;
+            background-color: #6200ea;
             color: white;
             padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #4b00c9;
+        }
+        .alert-danger {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            border-radius: 5px;
             margin-bottom: 20px;
-            border-radius: 4px;
+            font-size: 0.9em;
         }
         .alert-danger ul {
-            list-style: none;
-            padding: 0;
             margin: 0;
+            padding: 0;
+            list-style: none;
         }
         .alert-danger li {
             margin: 5px 0;
+        }
+        @media (max-width: 600px) {
+            .form-container {
+                margin: 10px;
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <!-- Aquí va el enlace al logo -->
-    <a href="{{ url('/') }}">
-        <img src="URL_DEL_LOGO" alt="Logo" style="max-height: 50px;">
-    </a>
+    <a href="{{ url('/') }}">Logo</a>
 </header>
 
-<h1>Add New Opinion</h1>
+<h1>Agregar Opinión</h1>
 
 @if ($errors->any())
     <div class="alert alert-danger">
@@ -107,29 +124,30 @@
     <form action="{{ route('opinions.store') }}" method="POST">
         @csrf
         <div class="form-group">
-            <label for="product_id">Product ID</label>
-            <input type="number" name="product_id" class="form-control" required>
+            <label for="product_id">ID del Producto</label>
+            <input type="number" name="product_id" id="product_id" class="form-control" required>
         </div>
         <div class="form-group">
-            <label for="rating">Rating</label>
-            <input type="number" name="rating" class="form-control" min="1" max="5" required>
+            <label for="rating">Calificación</label>
+            <input type="number" name="rating" id="rating" class="form-control" min="1" max="5" required>
         </div>
         <div class="form-group">
-            <label for="comment">Comment</label>
-            <textarea name="comment" class="form-control" required></textarea>
+            <label for="comment">Comentario</label>
+            <textarea name="comment" id="comment" class="form-control" rows="4" required></textarea>
         </div>
         <div class="form-group">
-            <label for="date">Date</label>
-            <input type="date" name="date" class="form-control" required>
+            <label for="date">Fecha</label>
+            <input type="date" name="date" id="date" class="form-control" required>
         </div>
         <div class="form-group">
-            <label for="usefulness">Usefulness</label>
-            <input type="number" name="usefulness" class="form-control" min="0" required>
+            <label for="usefulness">Utilidad</label>
+            <input type="number" name="usefulness" id="usefulness" class="form-control" min="0" required>
         </div>
-        <button type="submit" class="btn-primary">Add Opinion</button>
+        <button type="submit" class="btn-primary">Aregar Opinión</button>
     </form>
 </div>
 
 </body>
 </html>
+
 

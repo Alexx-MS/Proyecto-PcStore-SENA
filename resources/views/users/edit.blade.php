@@ -4,67 +4,186 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Usuario</title>
+    <style>
+        :root {
+            --deep-black: #121212;
+            --soft-black: #1E1E1E;
+            --dark-black: #0A0A0A;
+            --primary-red: #FF3333;
+            --dark-red: #CC0000;
+            --light-text: #F4F4F4;
+            --input-bg: #2C2C2C;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--deep-black), var(--soft-black));
+            color: var(--light-text);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .edit-container {
+            background: rgba(30, 30, 30, 0.9);
+            width: 100%;
+            max-width: 900px;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 51, 51, 0.2);
+        }
+
+        .form-title {
+            text-align: center;
+            color: var(--primary-red);
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            color: var(--primary-red);
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 0.75rem 1rem;
+            background-color: var(--input-bg);
+            border: 2px solid transparent;
+            border-radius: 8px;
+            color: var(--light-text);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: var(--primary-red);
+            box-shadow: 0 0 0 3px rgba(255, 51, 51, 0.2);
+        }
+
+        .password-hint {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 0.25rem;
+        }
+
+        .submit-btn {
+            grid-column: 1 / -1;
+            padding: 1rem;
+            background-color: var(--primary-red);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--dark-red);
+            transform: translateY(-3px);
+            box-shadow: 0 7px 14px rgba(0, 0, 0, 0.25);
+        }
+    </style>
 </head>
 <body>
-    <h1>Editar Usuario</h1>
+    <div class="edit-container">
+        <h1 class="form-title">Editar Usuario</h1>
+        <form>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="full_name">Nombre Completo</label>
+                    <input type="text" id="full_name" name="full_name" required>
+                </div>
 
-    <form action="{{ route('users.update', $user) }}" method="POST">
-        @csrf
-        @method('PUT')
-        <div>
-            <label for="full_name">Nombre Completo</label>
-            <input type="text" id="full_name" name="full_name" value="{{ $user->full_name }}" required>
-        </div>
+                <div class="form-group">
+                    <label for="username">Nombre de Usuario</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
 
-        <div>
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" value="{{ $user->username }}" required>
-        </div>
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" name="password">
+                    <span class="password-hint">Deja vacío si no deseas cambiarla</span>
+                </div>
 
-        <div>
-            <label for="password">Contraseña (deja vacío si no deseas cambiarla)</label>
-            <input type="password" id="password" name="password">
-        </div>
+                <div class="form-group">
+                    <label for="email">Correo Electrónico</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
 
-        <div>
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" value="{{ $user->email }}" required>
-        </div>
+                <div class="form-group">
+                    <label for="phone">Teléfono</label>
+                    <input type="text" id="phone" name="phone" required>
+                </div>
 
-        <div>
-            <label for="phone">Teléfono</label>
-            <input type="text" id="phone" name="phone" value="{{ $user->phone }}" required>
-        </div>
+                <div class="form-group">
+                    <label for="address">Dirección</label>
+                    <input type="text" id="address" name="address" required>
+                </div>
 
-        <div>
-            <label for="address">Dirección</label>
-            <input type="text" id="address" name="address" value="{{ $user->address }}" required>
-        </div>
+                <div class="form-group">
+                    <label for="postal_code">Código Postal</label>
+                    <input type="text" id="postal_code" name="postal_code" required>
+                </div>
 
-        <div>
-            <label for="postal_code">Código Postal</label>
-            <input type="text" id="postal_code" name="postal_code" value="{{ $user->postal_code }}" required>
-        </div>
+                <div class="form-group">
+                    <label for="birth_date">Fecha de Nacimiento</label>
+                    <input type="date" id="birth_date" name="birth_date" required>
+                </div>
 
-        <div>
-            <label for="birth_date">Fecha de Nacimiento</label>
-            <input type="date" id="birth_date" name="birth_date" value="{{ $user->birth_date }}" required>
-        </div>
+                <div class="form-group">
+                    <label for="user_type">Tipo de Usuario</label>
+                    <select id="user_type" name="user_type" required>
+                        <option value="ADMIN">Administrador</option>
+                        <option value="CLIENT">Cliente</option>
+                    </select>
+                </div>
 
-        <div>
-            <label for="user_type">Tipo de Usuario</label>
-            <select id="user_type" name="user_type" required>
-                <option value="ADMIN" {{ $user->user_type == 'ADMIN' ? 'selected' : '' }}>Admin</option>
-                <option value="CLIENT" {{ $user->user_type == 'CLIENT' ? 'selected' : '' }}>Cliente</option>
-            </select>
-        </div>
+                <div class="form-group">
+                    <label for="registration_date">Fecha de Registro</label>
+                    <input type="date" id="registration_date" name="registration_date" required>
+                </div>
 
-        <div>
-            <label for="registration_date">Fecha de Registro</label>
-            <input type="date" id="registration_date" name="registration_date" value="{{ $user->registration_date }}" required>
-        </div>
-
-        <button type="submit">Actualizar</button>
-    </form>
+                <button type="submit" class="submit-btn">Actualizar Información</button>
+            </div>
+        </form>
+    </div>
 </body>
 </html>

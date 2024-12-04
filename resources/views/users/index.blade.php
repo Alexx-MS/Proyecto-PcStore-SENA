@@ -171,7 +171,7 @@
                     <th>Email</th>
                     <th>Teléfono</th>
                     <th>Tipo de Usuario</th>
-                    <th>Acciones</th>
+                    
                 </tr>
             </thead>
             <tbody>

@@ -139,46 +139,43 @@
 <body>
     <div class="registration-wrapper">
         <h1 class="form-title">Registro</h1>
-        <form>
+        <form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data">
+            @csrf
             <div class="form-grid">
                 <div class="form-group">
                     <label for="full_name">Nombre Completo</label>
-                    <input type="text" id="full_name" class="form-input" required>
+                    <input type="text" id="full_name" name="full_name" class="form-input" required>
                 </div>
                 <div class="form-group">
                     <label for="username">Nombre de Usuario</label>
-                    <input type="text" id="username" class="form-input" required>
+                    <input type="text" id="username" name="username" class="form-input" required>
                 </div>
                 <div class="form-group">
                     <label for="email">Correo Electrónico</label>
-                    <input type="email" id="email" class="form-input" required>
+                    <input type="email" id="email" name="email" class="form-input" required>
                 </div>
                 <div class="form-group">
                     <label for="phone">Teléfono</label>
-                    <input type="tel" id="phone" class="form-input" required>
+                    <input type="tel" id="phone" name="phone" class="form-input">
                 </div>
                 <div class="form-group">
                     <label for="password">Contraseña</label>
-                    <input type="password" id="password" class="form-input" required>
-                </div>
-                <div class="form-group">
-                    <label for="confirm_password">Confirmar Contraseña</label>
-                    <input type="password" id="confirm_password" class="form-input" required>
+                    <input type="password" id="password" name="password" class="form-input" required>
                 </div>
                 <div class="form-group">
                     <label for="birth_date">Fecha de Nacimiento</label>
-                    <input type="date" id="birth_date" class="form-input" required>
+                    <input type="date" id="birth_date" name="birth_date" class="form-input">
                 </div>
                 <div class="form-group">
                     <label for="user_type">Tipo de Usuario</label>
-                    <select id="user_type" class="form-input" required>
+                    <select id="user_type" name="user_type" class="form-input" required>
                         <option value="CLIENT">Cliente</option>
                         <option value="ADMIN">Administrador</option>
                     </select>
                 </div>
             </div>
             <button type="submit" class="submit-btn">Crear Cuenta</button>
-        </form>
+        </form>        
     </div>
 </body>
 </html>

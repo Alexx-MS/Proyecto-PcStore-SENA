@@ -21,21 +21,22 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'full_name' => 'required|string|max:255',
-            'username' => 'required|string|max:255',
+            'full_name' => 'nullable|string|max:255',
+            'username' => 'nullable|string|max:255',
             'password' => 'required|string|min:8',
             'email' => 'required|email|max:255',
-            'phone' => 'required|numeric',
-            'address' => 'required|string|max:255',
-            'postal_code' => 'required|numeric',
-            'birth_date' => 'required|date',
+            'phone' => 'nullable|numeric',
+            'address' => 'nullable|string|max:255',
+            'postal_code' => 'nullable|numeric',
+            'birth_date' => 'nullable|date',
             'user_type' => 'required|in:ADMIN,CLIENT',
-            'registration_date' => 'required|date',
+            'registration_date' => now(),
         ]);
 
         User::create($validated);
-        return redirect()->route('users.index')->with('success', 'User created successfully.');
+        return redirect()->route('users.index')->with('success', 'Cuenta creada correctamente.');
     }
+    
     public function edit($id)
     {
         $user = User::findOrFail($id);
@@ -49,16 +50,16 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $validated = $request->validate([
-            'full_name' => 'required|string|max:255',
-            'username' => 'required|string|max:255',
-            'password' => 'nullable|string|min:8',
+            'full_name' => 'nullable|string|max:255',
+            'username' => 'nullable|string|max:255',
+            'password' => 'required|string|min:8',
             'email' => 'required|email|max:255',
-            'phone' => 'required|numeric',
-            'address' => 'required|string|max:255',
-            'postal_code' => 'required|numeric',
-            'birth_date' => 'required|date',
+            'phone' => 'nullable|numeric',
+            'address' => 'nullable|string|max:255',
+            'postal_code' => 'nullable|numeric',
+            'birth_date' => 'nullable|date',
             'user_type' => 'required|in:ADMIN,CLIENT',
-            'registration_date' => 'required|date',
+            'registration_date' => now(),
         ]);
 
         $user = User::findOrFail($id);

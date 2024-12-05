@@ -10,46 +10,44 @@ use App\Http\Controllers\OpinionController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
-
-
+use App\Http\Middleware\AdminMiddleware;
 
 // Rutas Home
 Route::get('/', [HomeController::class, 'index'])->name('home');
-// Route::get('home', function () {return view('home.home');})->name('home');
+
 
 // Rutas de Usuarios(Users)
 Route::resource('users', UserController::class);
 
 // Rutas de Categorias(Categories)
-Route::resource('categories', CategoryController::class);
-//Route::get('/category/{slug}', [CategoryController::class, 'showCategory'])->name('category');
+Route::resource('categories', CategoryController::class)->middleware(AdminMiddleware::class);
+
 
 // Rutas de Pagos(Payments)
-Route::resource('payments', PaymentController::class);
+Route::resource('payments', PaymentController::class)->middleware(AdminMiddleware::class);
 
 // Rutas de Pedidos(Orders)
-Route::resource('orders', OrderController::class);
+Route::resource('orders', OrderController::class)->middleware(AdminMiddleware::class);
 // Ruta para mostrar la lista de órdenes
 Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
 
 
 // Rutas de Productos(Products)
-Route::resource('products', ProductController::class);
+Route::resource('products', ProductController::class)->middleware(AdminMiddleware::class);
 Route::get('/product/{slug}', [ProductController::class, 'showToUser'])
     ->name('products.showUser'); // Ruta para mostar productos para usuario(User)
 
 // Rutas de Opiniones(Opinions)
-Route::resource('opinions', OpinionController::class);
+Route::resource('opinions', OpinionController::class)->middleware(AdminMiddleware::class);
 
 // Rutas de Detalles(Details)
-Route::resource('details', DetailController::class);
+Route::resource('details', DetailController::class)->middleware(AdminMiddleware::class);
 
 // Rutas Login 
 Route::get('/login', function () {return view('login');})->name('login');
 
 // Rutas de Carrito (Cart)
-//Route::middleware('auth')->group(function () { });
-
+Route::middleware('auth')->group(function () {
 
     Route::get('/cart/count', [CartController::class, 'getCartCount'])->name('cart.count');
 
@@ -68,6 +66,7 @@ Route::get('/login', function () {return view('login');})->name('login');
     // Crear pago
     Route::get('/payment/create/{orderId}', [CartController::class, 'createPayment'])->name('payment.create');
 
+});
 
 
 

@@ -20,28 +20,28 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::resource('users', UserController::class);
 
 // Rutas de Categorias(Categories)
-Route::resource('categories', CategoryController::class)->middleware(AdminMiddleware::class);
+Route::resource('categories', CategoryController::class);
 
 
 // Rutas de Pagos(Payments)
-Route::resource('payments', PaymentController::class)->middleware(AdminMiddleware::class);
+Route::resource('payments', PaymentController::class);
 
 // Rutas de Pedidos(Orders)
-Route::resource('orders', OrderController::class)->middleware(AdminMiddleware::class);
+Route::resource('orders', OrderController::class);
 // Ruta para mostrar la lista de órdenes
 Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
 
 
 // Rutas de Productos(Products)
-Route::resource('products', ProductController::class)->middleware(AdminMiddleware::class);
+Route::resource('products', ProductController::class);
 Route::get('/product/{slug}', [ProductController::class, 'showToUser'])
     ->name('products.showUser'); // Ruta para mostar productos para usuario(User)
 
 // Rutas de Opiniones(Opinions)
-Route::resource('opinions', OpinionController::class)->middleware(AdminMiddleware::class);
+Route::resource('opinions', OpinionController::class);
 
 // Rutas de Detalles(Details)
-Route::resource('details', DetailController::class)->middleware(AdminMiddleware::class);
+Route::resource('details', DetailController::class);
 
 // Rutas Login 
 Route::get('/login', function () {return view('login');})->name('login');

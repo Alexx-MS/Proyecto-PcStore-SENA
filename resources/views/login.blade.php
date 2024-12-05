@@ -29,7 +29,7 @@
           <input type="password" placeholder="Contraseña" required>
           <button type="submit">Iniciar Sesión</button>
         </form>
-        <button class="register">¿No tienes cuenta? Regístrate</button>
+        <a href="{{ route('users.create') }}" >¿Aun no tienes cuenta? Registrarse</a>
       </div>
     </div>
   </div>

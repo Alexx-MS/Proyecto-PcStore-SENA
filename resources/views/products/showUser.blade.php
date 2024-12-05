@@ -1,5 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
+@extends('layouts.app')
+
+@section('content')
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -105,6 +106,61 @@
             gap: 1rem;
         }
 
+        .quantity-container {
+            display: inline-flex;
+            align-items: center;
+            border: 1px solid #444;
+            border-radius: 5px;
+            overflow: hidden;
+            background-color: #222;
+        }
+
+        .quantity-input {
+            width: 60px;
+            padding: 5px;
+            text-align: center;
+            font-size: 1rem;
+            color: #fff;
+            background-color: transparent;
+            border: none;
+            outline: none;
+        }
+
+        .quantity-input::-webkit-inner-spin-button,
+        .quantity-input::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            appearance: none;
+            margin: 0;
+        }
+
+        .quantity-input:focus {
+            border-color: #f1c40f;
+            outline: none;
+        }
+
+        .add-to-cart-btn {
+            background-color: #28a745; /* Verde brillante */
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin-left: 10px;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+
+        .add-to-cart-form {
+            display: flex;
+            align-items: center;
+        }
+
         .btn {
             flex: 1;
             padding: 0.75rem;
@@ -123,7 +179,6 @@
             transform: scale(1.05);
         }
 
-        /* Métodos de pago */
         .payment-methods {
             margin-top: 2rem;
             display: flex;
@@ -147,7 +202,6 @@
             transform: scale(1.1);
         }
 
-        /* Opiniones */
         #opiniones {
             margin-top: 30px;
             color: #ddd;
@@ -175,7 +229,6 @@
             font-size: 0.9rem;
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
             .container {
                 flex-direction: column;
@@ -237,19 +290,19 @@
 
             <!-- Botones de Acción -->
             <div class="btn-container">
-            <form action="{{ route('cart.add', ['productId' => $product->id]) }}" method="POST">
-                @csrf
-                <input type="number" name="quantity" value="1" min="1" required>
-                <button type="submit">Agregar al carrito</button>
-            </form>
-
+                <form action="{{ route('cart.add', ['productId' => $product->id]) }}" method="POST" class="add-to-cart-form">
+                    @csrf
+                    <div class="quantity-container">
+                    <input type="number" name="quantity" value="1" min="1" required class="quantity-input" step="1">
+                    </div>
+                    <button type="submit" class="btn add-to-cart-btn">Agregar al carrito</button>
+                </form>
                 <button class="btn">Comprar Ahora</button>
             </div>
         </div>
 
     </div>
 
-    <!-- Métodos de Pago dentro del contenedor -->
     <div class="payment-methods">
         <p>Opciones de pago:</p>
         <img src="https://logotipoz.com/wp-content/uploads/2021/10/version-horizontal-large-logo-mercado-pago.webp" alt="Mercado Pago">
@@ -262,32 +315,15 @@
         <img src="https://www.bximpresiondigital.com/wp-content/uploads/2018/09/efecty.png" alt="Efecty">
     </div>
 
-    <!-- Sección de Opiniones -->
     <div id="opiniones">
-        <h3>Opiniones del Producto</h3>
-    
-        <!-- Mostrar las opiniones -->
-        @foreach ($product->opinions as $opinion)
-            <div class="opinion">
-                <strong>{{ $opinion->user->name ?? 'Usuario Anónimo' }}</strong><br>
-                Calificación: 
-                @if ($opinion->rating)
-                    {{ $opinion->rating }} estrellas
-                @else
-                    No calificado aún
-                @endif
-                <br>
-                Comentario: <p>{{ $opinion->comment ?? 'No se proporcionó comentario.' }}</p>
-                Fecha: {{ $opinion->date }} <br>
-                Utilidad: 
-                @if ($opinion->usefulness)
-                    <span style="color: green;">Útil</span>
-                @else
-                    <span style="color: red;">No útil</span>
-                @endif
-            </div>
-        @endforeach
+        <h2>Opiniones del Producto:</h2>
+        <div class="opinion">
+            <strong>Usuario1</strong>
+            <p>Me encanta este producto, funciona muy bien.</p>
+            <p class="usefulness">¿Te fue útil esta opinión? Sí/No</p>
+        </div>
     </div>
 
 </body>
 </html>
+@endsection

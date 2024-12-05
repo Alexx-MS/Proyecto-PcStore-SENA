@@ -15,7 +15,8 @@ class UserController extends Controller
 
     public function create()
     {
-        return view('users.create');
+        $users = User::all();
+        return view('users.create', compact('users'));
     }
 
     public function store(Request $request)
@@ -34,7 +35,7 @@ class UserController extends Controller
         ]);
 
         User::create($validated);
-        return redirect()->route('users.index')->with('success', 'Cuenta creada correctamente.');
+        return redirect()->route('home')->with('success', 'Cuenta creada correctamente.');
     }
     
     public function edit($id)

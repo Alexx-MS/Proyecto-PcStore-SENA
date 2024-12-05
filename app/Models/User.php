@@ -4,9 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Auth\Authenticatable;
 
 class User extends Model
 {
+    use HasFactory;
+    
+    protected $table = 'users';
+
     // Permitir la asignación masiva solo en estos campos
     protected $fillable = [
         'full_name', 'username', 'password', 'email', 'phone', 

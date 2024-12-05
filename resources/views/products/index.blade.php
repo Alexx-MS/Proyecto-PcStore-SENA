@@ -1,25 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Productos</title>
     <style>
+        /* Color Palette */
+        :root {
+            --deep-black: #121212;
+            --soft-black: #1E1E1E;
+            --primary-red: #B22222;
+            --dark-red: #8B0000;
+            --light-text: #F5F5F5;
+            --hover-red: #8B0000;
+        }
+
         /* General Styles */
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #1e1e2f; /* Fondo oscuro, elegante */
-            color: #f5f5f5; /* Texto claro para buen contraste */
+            background-color: var(--deep-black);
+            color: var(--light-text);
             margin: 0;
             padding: 20px;
         }
 
         h1 {
             text-align: center;
-            color: #00c7ff; /* Azul eléctrico */
+            color: var(--primary-red);
             font-size: 2.8em;
             margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
         /* Button Styles */
@@ -38,42 +47,42 @@
 
         /* Primary Button */
         .btn-primary {
-            background-color: #00c7ff; /* Azul llamativo */
-            color: #fff;
+            background-color: var(--primary-red);
+            color: var(--light-text);
         }
 
         .btn-primary:hover {
-            background-color: #0078a3;
+            background-color: var(--dark-red);
         }
 
         /* Info Button */
         .btn-info {
-            background-color: #ff9f43; /* Naranja vibrante */
-            color: #fff;
+            background-color: #A52A2A; /* Dark red for info */
+            color: var(--light-text);
         }
 
         .btn-info:hover {
-            background-color: #cc7a33;
+            background-color: #5D0000;
         }
 
         /* Warning Button */
         .btn-warning {
-            background-color: #ffcd38; /* Amarillo brillante */
-            color: #333;
+            background-color: #A52A2A; /* Brown-red for warning */
+            color: var(--light-text);
         }
 
         .btn-warning:hover {
-            background-color: #d4a82d;
+            background-color: #A52A2A;
         }
 
         /* Danger Button */
         .btn-danger {
-            background-color: #ff5252; /* Rojo moderno */
-            color: #fff;
+            background-color:#A52A2A; /* Crimson for danger */
+            color: var(--light-text);
         }
 
         .btn-danger:hover {
-            background-color: #d43f3f;
+            background-color:#A52A2A;
         }
 
         /* Alert Styles */
@@ -89,9 +98,9 @@
 
         /* Success Alert */
         .alert-success {
-            background-color: #38c172;
-            color: #fff;
-            border: 1px solid #2d995b;
+            background-color: var(--primary-red);
+            color: var(--light-text);
+            border: 1px solid var(--dark-red);
         }
 
         /* Table Styles */
@@ -99,7 +108,7 @@
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
-            background-color: #29293d; /* Fondo oscuro */
+            background-color: var(--soft-black);
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
@@ -110,23 +119,23 @@
         .table td {
             padding: 15px;
             text-align: left;
-            color: #f5f5f5;
+            color: var(--light-text);
             border-bottom: 1px solid #39394d;
         }
 
         .table th {
-            background-color: #00c7ff; /* Azul eléctrico */
-            color: #1e1e2f;
+            background-color: var(--primary-red);
+            color: var(--light-text);
             text-transform: uppercase;
             font-size: 14px;
         }
 
         .table-striped tr:nth-child(even) {
-            background-color: #20202e; /* Gris oscuro */
+            background-color: #2C2C2C; /* Slightly lighter black */
         }
 
         .table-striped tr:hover {
-            background-color: #33334d; /* Efecto hover */
+            background-color: rgba(178, 34, 34, 0.2); /* Translucent red hover */
         }
 
         /* Form Inline Style for Delete Button */
@@ -137,12 +146,12 @@
         /* Links */
         a {
             text-decoration: none;
-            color: #00c7ff;
+            color: var(--primary-red);
             transition: color 0.3s ease;
         }
 
         a:hover {
-            color: #0078a3;
+            color: var(--dark-red);
         }
 
         /* Mobile Responsive */

@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,11 +52,7 @@
         }
 
         .btn-primary:hover {
-            .btn-primary:hover {
-          background-color: var(--primary-red);
-         transform: none;
-          opacity: 1;
-          }
+            background-color: #0078a3;
         }
 
         /* Info Button */

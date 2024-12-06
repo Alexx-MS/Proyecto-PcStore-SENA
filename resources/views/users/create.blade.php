@@ -144,11 +144,11 @@
             <div class="form-grid">
                 <div class="form-group">
                     <label for="full_name">Nombre Completo</label>
-                    <input type="text" id="full_name" name="full_name" class="form-input" required>
+                    <input type="text" id="full_name" name="full_name" class="form-input" >
                 </div>
                 <div class="form-group">
                     <label for="username">Nombre de Usuario</label>
-                    <input type="text" id="username" name="username" class="form-input" required>
+                    <input type="text" id="username" name="username" class="form-input" >
                 </div>
                 <div class="form-group">
                     <label for="email">Correo Electrónico</label>

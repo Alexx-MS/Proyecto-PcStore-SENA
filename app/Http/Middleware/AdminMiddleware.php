@@ -9,15 +9,15 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminMiddleware
 {
-    public function handle(Request $request, Closure $next)
+        public function handle(Request $request, Closure $next)
     {
-        // Verifica si el usuario está autenticado y si su user_type es 'ADMIN'
-        if (!Auth::user()->user_type == 'ADMIN') {
-            return redirect()->route('home'); // Redirige a la página de inicio si no es admin
+        if (Auth::user() && Auth::user()->user_type === 'ADMIN') {
+            return $next($request);
         }
-
-        return $next($request);
+        
+        return redirect()->route('home')->with('error', 'No tienes acceso a esta sección.');
     }
+
 }
 
 

@@ -3,10 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable; // Aquí extiendes de Authenticatable
+use Illuminate\Notifications\Notifiable;
 
-class User extends Model
+class User extends Authenticatable // Cambié la extensión de Model a Authenticatable
 {
+    use HasFactory, Notifiable;  // Notifiable es importante para notificaciones
+
+    protected $table = 'users';
+
     // Permitir la asignación masiva solo en estos campos
     protected $fillable = [
         'full_name', 'username', 'password', 'email', 'phone', 
@@ -18,5 +23,4 @@ class User extends Model
     {
         return $this->hasMany(Order::class);
     }
-
 }

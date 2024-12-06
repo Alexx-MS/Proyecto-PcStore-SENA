@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -24,7 +25,7 @@ class UserController extends Controller
         $validated = $request->validate([
             'full_name' => 'nullable|string|max:255',
             'username' => 'nullable|string|max:255',
-            'password' => 'required|string|min:8',
+            'password' => 'required|string',
             'email' => 'required|email|max:255',
             'phone' => 'nullable|numeric',
             'address' => 'nullable|string|max:255',
@@ -33,6 +34,9 @@ class UserController extends Controller
             'user_type' => 'required|in:ADMIN,CLIENT',
             'registration_date' => now(),
         ]);
+
+        $validated['password'] = Hash::make($validated['password']);
+        
 
         User::create($validated);
         return redirect()->route('home')->with('success', 'Cuenta creada correctamente.');
@@ -53,7 +57,7 @@ class UserController extends Controller
         $validated = $request->validate([
             'full_name' => 'nullable|string|max:255',
             'username' => 'nullable|string|max:255',
-            'password' => 'required|string|min:8',
+            'password' => 'nullable|string',
             'email' => 'required|email|max:255',
             'phone' => 'nullable|numeric',
             'address' => 'nullable|string|max:255',
@@ -62,6 +66,14 @@ class UserController extends Controller
             'user_type' => 'required|in:ADMIN,CLIENT',
             'registration_date' => now(),
         ]);
+
+        if (!empty($validated['password'])) {
+            // Si se envió una nueva contraseña, encriptarla
+            $validated['password'] = Hash::make($validated['password']);
+        } else {
+            // Si no se envió contraseña, quitarla de la actualización
+            unset($validated['password']);
+        }
 
         $user = User::findOrFail($id);
         $user->update($validated);

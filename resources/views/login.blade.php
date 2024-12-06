@@ -6,24 +6,37 @@
 	<link rel="stylesheet" href="{{ asset('css/login.css') }}">
 </head>
 <body>
+
+  @if ($errors->any())
+  <div class="alert alert-danger">
+      <ul>
+          @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+          @endforeach
+      </ul>
+  </div>
+@endif
+
+
 <div class="login-box">
   <p>Inicio de sesión</p>
-  <form>
+  <form action="{{ route('login') }}" method="POST">
+    @csrf
     <div class="user-box">
-      <input required="" name="" type="text">
+      <input type="email" name="email" id="email" required>
       <label>Usuario</label>
     </div>
     <div class="user-box">
-      <input required="" name="" type="password">
+      <input type="password"  name="password" id="password"  required>
       <label>Contraseña</label>
     </div>
-    <a href="{{ route('home')}}" >
+    <button type="submit">
       <span></span>
       <span></span>
       <span></span>
       <span></span>
-      Iniciar
-    </a>
+      Iniciar sesión
+    </button>
   </form>
   <br>
   <p> <a href="{{ route('users.create')}}" class="a2">¿No tienes cuenta? ¡CREALA AHORA!</a></p></br>

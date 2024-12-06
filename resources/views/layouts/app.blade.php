@@ -41,8 +41,28 @@
                 <span id="cart-count" class="badge bg-danger">{{ collect(session('cart', []))->sum('quantity') }}</span>
             </a>
             
-            
+            @auth
+                @if (auth()->user()->user_type === 'ADMIN')
+                    <a href="{{ route('admin.dashboard') }}" class="btn btn-warning">Administrar Tienda</a>
+                @endif
+        
+                <div class="user-profile">
+                    <button class="profile-btn">👤 {{ auth()->user()->name }}</button>
+                    <ul class="profile-menu">
+                        <li>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit">Salir</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            @else
+                <a href="{{ route('login') }}" class="btn btn-primary">Iniciar sesión</a>
+            @endauth
         </div>
+        
+        
     </div>
 
     <main class="main-content">

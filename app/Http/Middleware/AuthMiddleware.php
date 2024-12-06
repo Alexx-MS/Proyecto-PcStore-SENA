@@ -16,9 +16,9 @@ class AuthMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!Auth::user()) {
-            return redirect()->route('login');
-        }
-        return $next($request);
+        if(Auth::user()) {
+            return $next($request);
+        } 
+        return redirect()->route('login')->with('error', 'Registrate o inicia sesion :)');
     }
 }

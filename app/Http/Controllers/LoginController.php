@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -16,13 +17,16 @@ class LoginController extends Controller
             'password' => 'required|string',
         ]);
 
+        $redentials['password'] = Hash::make($credentials['password']);
+
         // Intentar autenticar al usuario
         if (Auth::attempt($credentials)) {
+
             // Regenerar la sesión
             $request->session()->regenerate();
 
             // Redirigir a la página principal 
-            return redirect()->intended('home'); // Cambia 'home' por la ruta deseada
+            return redirect()->intended('/'); 
         }
 
         // Si falla, regresar con un mensaje de error
@@ -39,7 +43,7 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('login');
+        return redirect()->route('home');
     }
 }
 

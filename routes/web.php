@@ -13,6 +13,11 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LoginController;
 use App\Http\Middleware\AdminMiddleware;
 
+Route::get('/admin/dashboard', function () {
+    return view('admin.dashboard');
+})->middleware(['auth', 'admin'])->name('admin.dashboard');
+
+
 // Rutas Home
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -45,12 +50,14 @@ Route::resource('opinions', OpinionController::class);
 Route::resource('details', DetailController::class);
 
 // Rutas Login 
+Route::get('/login', function () {return view('login');})->name('login'); /////////////////
+Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/login', function () {return view('login');})->name('login');
 
 
 // Rutas de Carrito (Cart)
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth'])->group(function () { 
 
     Route::get('/cart/count', [CartController::class, 'getCartCount'])->name('cart.count');
 

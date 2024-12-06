@@ -125,16 +125,19 @@
 <body>
     <div class="edit-container">
         <h1 class="form-title">Editar Usuario</h1>
-        <form>
+        
+        <form action="{{ route('users.update', $user->id) }}" method="POST">
+            @csrf
+            @method('PUT')
             <div class="form-grid">
                 <div class="form-group">
                     <label for="full_name">Nombre Completo</label>
-                    <input type="text" id="full_name" name="full_name" required>
+                    <input type="text" id="full_name" name="full_name" >
                 </div>
 
                 <div class="form-group">
                     <label for="username">Nombre de Usuario</label>
-                    <input type="text" id="username" name="username" required>
+                    <input type="text" id="username" name="username" >
                 </div>
 
                 <div class="form-group">
@@ -145,27 +148,27 @@
 
                 <div class="form-group">
                     <label for="email">Correo Electrónico</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" name="email" >
                 </div>
 
                 <div class="form-group">
                     <label for="phone">Teléfono</label>
-                    <input type="text" id="phone" name="phone" required>
+                    <input type="text" id="phone" name="phone" >
                 </div>
 
                 <div class="form-group">
                     <label for="address">Dirección</label>
-                    <input type="text" id="address" name="address" required>
+                    <input type="text" id="address" name="address" >
                 </div>
 
                 <div class="form-group">
                     <label for="postal_code">Código Postal</label>
-                    <input type="text" id="postal_code" name="postal_code" required>
+                    <input type="text" id="postal_code" name="postal_code" >
                 </div>
 
                 <div class="form-group">
                     <label for="birth_date">Fecha de Nacimiento</label>
-                    <input type="date" id="birth_date" name="birth_date" required>
+                    <input type="date" id="birth_date" name="birth_date" >
                 </div>
 
                 <div class="form-group">
@@ -174,11 +177,6 @@
                         <option value="ADMIN">Administrador</option>
                         <option value="CLIENT">Cliente</option>
                     </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="registration_date">Fecha de Registro</label>
-                    <input type="date" id="registration_date" name="registration_date" required>
                 </div>
 
                 <button type="submit" class="submit-btn">Actualizar Información</button>

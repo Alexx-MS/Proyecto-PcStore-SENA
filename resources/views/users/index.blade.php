@@ -1,152 +1,176 @@
-
+<!DOCTYPE html>
+<html lang="es">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Usuarios</title>
     <style>
         :root {
-            --background-color: #f9f9f9;
-            --primary-color: #2a9d8f;
-            --secondary-color: #264653;
-            --accent-color: #e76f51;
-            --light-color: #ffffff;
-            --dark-color: #333333;
-            --text-color: #2d2d2d;
-            --border-radius: 8px;
+            --primary-red: #B22222;
+            --dark-black: #121212;
+            --light-black: #1E1E1E;
+            --text-white: #F4F4F4;
+            --hover-red: #8B0000;
+            --border-color: #333333;
         }
-        
+
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--background-color);
-            color: var(--text-color);
+            font-family: 'Arial', sans-serif;
+            background-color: var(--dark-black);
+            color: var(--text-white);
             margin: 0;
             padding: 0;
             line-height: 1.6;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 2rem auto;
             padding: 1rem;
-            background-color: var(--light-color);
-            border-radius: var(--border-radius);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            overflow-x: auto;
+            background-color: var(--light-black);
+            border-radius: 12px;
+            box-shadow: 0 15px 30px rgba(178, 34, 34, 0.2);
         }
-        
+
         .table-title {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: bold;
-            color: var(--secondary-color);
-            margin-bottom: 1rem;
+            color: var(--primary-red);
             text-align: center;
+            margin-bottom: 2rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
         }
-        
+
         .user-table {
             width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 1rem;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 12px;
+            overflow: hidden;
         }
-        
+
         .user-table thead {
-            background-color: var(--primary-color);
-            color: var(--light-color);
+            background-color: var(--primary-red);
         }
-        
+
         .user-table th,
         .user-table td {
             padding: 1rem;
             text-align: left;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px solid var(--border-color);
         }
-        
+
         .user-table th {
-            font-size: 0.9rem;
+            color: var(--text-white);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
         }
-        
+
+        .user-table tbody tr {
+            background-color: var(--light-black);
+            transition: background-color 0.3s ease;
+        }
+
         .user-table tbody tr:hover {
-            background-color: #f0f0f0;
+            background-color: rgba(178, 34, 34, 0.1);
         }
-        
-        .user-table tbody td {
-            color: var(--dark-color);
-        }
-        
+
         .action-links {
             display: flex;
             gap: 0.5rem;
         }
-        
+
         .action-link {
             text-decoration: none;
-            color: var(--light-color);
             padding: 0.5rem 1rem;
-            border-radius: var(--border-radius);
+            border-radius: 6px;
             font-size: 0.9rem;
-            transition: transform 0.3s ease, background-color 0.3s ease;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: all 0.3s ease;
         }
-        
+
         .action-link-view {
-            background-color: var(--primary-color);
+            background-color: #2196F3;
+            color: var(--text-white);
         }
-        
+
         .action-link-edit {
-            background-color: var(--secondary-color);
+            background-color: #FFC107;
+            color: var(--dark-black);
         }
-        
+
         .action-link-delete {
-            background-color: var(--accent-color);
+            background-color: var(--primary-red);
+            color: var(--text-white);
         }
-        
+
         .action-link:hover {
-            transform: scale(1.05);
-            opacity: 0.9;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
         }
-        
-        /* Responsive adjustments */
+
         @media (max-width: 768px) {
-            .table-title {
-                font-size: 1.5rem;
+            .container {
+                margin: 1rem;
+                padding: 0.5rem;
             }
-        
-            .user-table th,
-            .user-table td {
-                padding: 0.75rem;
+
+            .user-table {
+                font-size: 0.9rem;
             }
-        
+
             .action-links {
-                flex-wrap: wrap;
+                flex-direction: column;
             }
         }
-        
     </style>
 </head>
-<tbody>
-    @forelse ($users as $user)
-        <tr>
-            <td>{{ $user->full_name }}</td>
-            <td>{{ $user->username }}</td>
-            <td>{{ $user->email }}</td>
-            <td>{{ $user->phone }}</td>
-            <td>{{ $user->user_type }}</td>
-            <td>
-                <div class="action-links">
-                    <a href="{{ route('users.show', $user->id) }}" class="action-link action-link-view">Ver</a>
-                    <a href="{{ route('users.edit', $user->id) }}" class="action-link action-link-edit">Editar</a>
-                    <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display:inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="action-link action-link-delete" style="border:none;background:none;cursor:pointer;color:inherit;">
-                            Eliminar
-                        </button>
-                    </form>
-                </div>
-            </td>
-        </tr>
-    @empty
-        <tr>
-            <td colspan="6" style="text-align: center;">No hay usuarios registrados.</td>
-        </tr>
-    @endforelse
-</tbody>
+<body>
+    <div class="container">
+        <h1 class="table-title">Gestión de Usuarios</h1>
+        <table class="user-table">
+            <thead>
+                <tr>
+                    <th>Nombre Completo</th>
+                    <th>Usuario</th>
+                    <th>Correo Electrónico</th>
+                    <th>Teléfono</th>
+                    <th>Tipo de Usuario</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse ($users as $user)
+                    <tr>
+                        <td>{{ $user->full_name }}</td>
+                        <td>{{ $user->username }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td>{{ $user->phone }}</td>
+                        <td>{{ $user->user_type }}</td>
+                        <td>
+                            <div class="action-links">
+                                <a href="{{ route('users.show', $user->id) }}" class="action-link action-link-view">Ver</a>
+                                <a href="{{ route('users.edit', $user->id) }}" class="action-link action-link-edit">Editar</a>
+                                <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="action-link action-link-delete">
+                                        Eliminar
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="6" style="text-align: center;">No hay usuarios registrados.</td>
+                    </tr>
+                @endforelse
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

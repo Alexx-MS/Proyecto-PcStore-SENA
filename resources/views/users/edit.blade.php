@@ -125,7 +125,8 @@
 <body>
     <div class="edit-container">
         <h1 class="form-title">Editar Usuario</h1>
-        
+        @csrf
+        @method('PUT')
         <form action="{{ route('users.update', $user->id) }}" method="POST">
             @csrf
             @method('PUT')

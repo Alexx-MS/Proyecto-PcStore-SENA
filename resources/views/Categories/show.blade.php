@@ -44,22 +44,21 @@
         }
 
         .product-image {
-    width: 100%; 
-    height: 150px;
-    overflow: hidden; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #222; 
-}
+            width: 100%; 
+            height: 150px;
+            overflow: hidden; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #222; 
+        }
 
-.product-image img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: cover; 
-    border-radius: 5px; 
-}
-        
+        .product-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover; 
+            border-radius: 5px; 
+        }
 
         .product-info {
             padding: 15px;
@@ -82,6 +81,16 @@
             font-weight: bold;
             color: #ff5722;
             margin: 0 0 10px;
+        }
+
+        .product-rating {
+            font-size: 14px;
+            margin: 10px 0;
+        }
+
+        .product-rating span {
+            color: #ffcc00;
+            margin-right: 5px;
         }
 
         .product-link {
@@ -122,28 +131,51 @@
                 @foreach ($category->products as $product)
                     <div class="product-card">
                         <!-- Imagen del producto -->
-                        @if ($product->image)
                         <div class="product-image">
-            <img src="{{ $product->image }}" alt="{{ $product->name }}">
-        </div>
-                        @else
-                            <img src="{{ asset('images/no-image.png') }}" alt="Imagen no disponible" class="product-image">
-                        @endif
+                            @if ($product->image)
+                                <img src="{{ $product->image }}" alt="{{ $product->name }}">
+                            @else
+                                <img src="{{ asset('images/no-image.png') }}" alt="Imagen no disponible">
+                            @endif
+                        </div>
                         <div class="product-info">
                             <!-- Nombre del producto -->
                             <h3 class="product-name">{{ $product->name }}</h3>
+                            <!-- Rating del producto -->
+                            <div class="product-rating">
+                                @php
+                                    $averageRating = $product->averageRating ?? 0;
+                                    $fullStars = floor($averageRating);
+                                    $hasHalfStar = $averageRating - $fullStars > 0.5;
+                                @endphp
+
+                                <!-- Estrellas llenas -->
+                                @for ($i = 0; $i < $fullStars; $i++)
+                                    <span>&#9733;</span> <!-- Estrella llena -->
+                                @endfor
+
+                                <!-- Media estrella -->
+                                @if ($hasHalfStar)
+                                    <span>&#9734;</span> <!-- Media estrella -->
+                                @endif
+
+                                <!-- Estrellas vacías -->
+                                @for ($i = $fullStars + ($hasHalfStar ? 1 : 0); $i < 5; $i++)
+                                    <span>&#9734;</span> <!-- Estrella vacía -->
+                                @endfor
+                                <small>({{ number_format($averageRating, 1) }}/5)</small>
+                            </div>
                             <!-- Descripción breve -->
                             <p class="product-description">{{ Str::limit($product->description, 100) }}</p>
                             <!-- Precio -->
                             <p class="product-price">${{ number_format($product->price, 0, ',', '.') }}</p>
                             <!-- Enlace para ver detalles -->
-                            <a href="{{ route('products.showUser', $product->slug) }}" class="product-link" title="ver detalles del producto">¡Comprar Ahora!</a>
+                            <a href="{{ route('products.showUser', $product->slug) }}" class="product-link" title="ver detalles del producto">Ver Detalles</a>
                         </div>
                     </div>
                 @endforeach
             </div>
         @endif
     </div>
-
 </body>
 @endsection

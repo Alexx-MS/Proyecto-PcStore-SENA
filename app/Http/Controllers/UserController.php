@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -45,7 +46,14 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
-        return view('users.edit', compact('user'));
+
+        if (Auth::user()->user_type === 'ADMIN') {
+            // Cargar vista para el administrador
+            return view('users.edit', compact('user'));
+        } else {
+            // Cargar vista para el cliente
+            return view('user.edit', compact('user'));
+        }
     }
         public function show(User $user)
     {
@@ -78,7 +86,8 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->update($validated);
 
-        return redirect()->route('users.index')->with('success', 'Usuario actualizado exitosamente.');
+        return redirect()->route(Auth::user()->user_type === 'ADMIN' ? 'users.index' : 'profile')->with('success', 'Datos actualizados exitosamente.');
+
     }
 
     public function destroy($id)

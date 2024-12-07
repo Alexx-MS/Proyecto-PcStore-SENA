@@ -213,5 +213,7 @@
             @endforeach
         </tbody>
     </table>
+
+    <a href="{{ route ('admin.dashboard')}}">Volver</a>
 </body>
 </html>

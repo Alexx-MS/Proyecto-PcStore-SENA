@@ -1,0 +1,92 @@
+/* Estilo general para el perfil */
+.profile-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+/* Cabecera del perfil */
+.profile-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.profile-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid #007bff;
+    margin-bottom: 1rem;
+}
+
+.profile-name {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.profile-email {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+/* Información del perfil */
+.profile-body {
+    margin-top: 2rem;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 1rem;
+}
+
+.profile-info {
+    list-style: none;
+    padding: 0;
+}
+
+.profile-info li {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #444;
+}
+
+.profile-info strong {
+    color: #333;
+}
+
+/* Botón para el administrador */
+.admin-section {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.admin-button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #28a745;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.admin-button:hover {
+    background-color: #218838;
+}
+
+.user-profile-edit {
+   background-color: #007bff;
+   border-radius: 10px;
+   padding: 10px 10px;
+}

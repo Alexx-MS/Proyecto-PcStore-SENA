@@ -19,21 +19,22 @@ class OpinionController extends Controller
         return view('opinions.create');
     }
 
-    public function store(Request $request, Product $product)
+        public function store(Request $request, Product $product)
     {
         // Validación de los datos
         $request->validate([
             'rating' => 'nullable|integer|between:1,5', // Calificación opcional, si se incluye debe estar entre 1 y 5
-            'comment' => 'nullable|string|max:500', // Comentario opcional
+            'comment' => 'nullable|string|max:1000', // Comentario opcional
             'usefulness' => 'nullable|boolean', // Utilidad opcional
         ]);
 
         // Crear la opinión asociada al producto
         $product->opinions()->create([
             'rating' => $request->rating ?? null, // Si no se llena, se guarda como null
-            'comment' => $request->comment, // Si no se llena, se guarda como null
+            'comment' => $request->comment ?? null, // Si no se llena, se guarda como null
             'date' => now(), // Fecha automática (se asigna la fecha actual)
             'usefulness' => $request->usefulness ?? false, // Si no se llena, se marca como no útil
+            'product_id' => $product->id, // El ID del producto lo obtenemos de la ruta
         ]);
 
         // Redirigir o devolver una respuesta

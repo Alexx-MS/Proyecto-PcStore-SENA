@@ -17,6 +17,14 @@ Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
 })->middleware(['auth', 'admin'])->name('admin.dashboard');
 
+Route::get('/profile', function () {
+    return view('profile');
+})->middleware(['auth'])->name('profile');
+
+Route::get('/profile/edit', function () {
+    return view('edit-profile');
+})->middleware(['auth'])->name('userProfile.edit');
+
 
 // Rutas Home
 Route::get('/', [HomeController::class, 'index'])->name('home');

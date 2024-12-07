@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -21,9 +22,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer('layouts.app', function ($view) { 
+        // Compartir las categorías con la vista 'layouts.app'
+        View::composer('layouts.app', function ($view) {
             $categories = Category::all(); 
             $view->with('categories', $categories); 
+        });
+
+        // Compartir los productos con todas las vistas
+        View::composer('*', function ($view) {
+            $products = Product::all(); 
+            $view->with('products', $products);
         });
     }
 

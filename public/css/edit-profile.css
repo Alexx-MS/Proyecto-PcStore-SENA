@@ -1,0 +1,99 @@
+/* Contenedor principal */
+.edit-profile-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+/* Título principal */
+.edit-profile-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+/* Subtítulo */
+.edit-profile-subtitle {
+    font-size: 1rem;
+    color: #666;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+/* Campos del formulario */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #555;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Campo opcional */
+.optional {
+    font-size: 0.9rem;
+    color: #888;
+    font-style: italic;
+}
+
+/* Acciones del formulario */
+.form-actions {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-secondary {
+    color: #333;
+    background-color: #e0e0e0;
+    border: none;
+}
+
+.btn-secondary:hover {
+    background-color: #c0c0c0;
+}

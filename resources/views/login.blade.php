@@ -24,7 +24,7 @@
     @csrf
     <div class="user-box">
       <input type="email" name="email" id="email" required>
-      <label>Usuario</label>
+      <label>Email</label>
     </div>
     <div class="user-box">
       <input type="password"  name="password" id="password"  required>

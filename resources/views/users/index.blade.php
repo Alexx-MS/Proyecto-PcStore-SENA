@@ -174,5 +174,7 @@
             </tbody>
         </table>
     </div>
+
+    <a href="{{ route ('admin.dashboard')}}">Volver</a>
 </body>
 </html>

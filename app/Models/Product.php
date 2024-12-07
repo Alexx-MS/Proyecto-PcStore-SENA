@@ -47,7 +47,7 @@ class Product extends Model
         return $this->belongsTo(Detail::class);
     }
 
-    // Relación inversa con opiniones
+    // Relación uno a muchos con Opiniones
     public function opinions () 
     {
         return $this->hasMany(Opinion::class);
@@ -58,4 +58,11 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+     // Promedio de las calificaciones
+    public function getAverageRatingAttribute()
+    {
+        return $this->opinions()->avg('rating') ?? 0; // Devuelve 0 si no hay calificaciones
+    }
+
 }

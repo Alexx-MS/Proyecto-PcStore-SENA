@@ -252,6 +252,89 @@
                 height: 40px;
             }
         }
+
+        .rating-container {
+            margin-top: 1rem;
+            background-color: #222;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            color: #f1c40f;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        .rating-container strong {
+            display: block;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        #rating-system {
+            max-width: 500px; /* Limita el ancho del sistema de calificación */
+            margin: 0 auto; /* Centra el contenido */
+            text-align: center; /* Alinea el texto al centro */
+        }
+        
+        #rating-system h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #f1c40f;
+        }
+        
+        .rating-controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px; /* Espacio entre controles */
+            margin-bottom: 20px;
+        }
+        
+        .control {
+            font-size: 1.5rem; /* Tamaño más pequeño para los íconos 🎮 */
+            cursor: pointer;
+            transition: transform 0.2s ease, color 0.3s ease;
+        }
+        
+        input[type="radio"] {
+            display: none; /* Oculta los botones de radio originales */
+        }
+        
+        input[type="radio"]:checked + .control {
+            color: #28a745; /* Cambia el color del ícono seleccionado */
+            transform: scale(1.2); /* Agranda el ícono seleccionado */
+        }
+        
+        .control:hover {
+            transform: scale(1.1); /* Agranda un poco al pasar el mouse */
+            color: #f1c40f; /* Cambia a un color diferente al pasar el mouse */
+        }
+        
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            resize: vertical;
+        }
+        
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        
     </style>
 </head>
 <body>
@@ -288,12 +371,18 @@
                 @endif
             </div>
 
+            <!-- Calificación promedio -->
+            <aside class="rating-container">
+                <strong>⭐ Calificación Promedio ⭐</strong>
+                <p>{{ number_format($product->averageRating, 1) }} / 5</p>
+            </aside>
+
             <!-- Botones de Acción -->
             <div class="btn-container">
                 <form action="{{ route('cart.add', ['productId' => $product->id]) }}" method="POST" class="add-to-cart-form">
                     @csrf
                     <div class="quantity-container">
-                    <input type="number" name="quantity" value="1" min="1" required class="quantity-input" step="1">
+                        <input type="number" name="quantity" value="1" min="1" required class="quantity-input" step="1">
                     </div>
                     <button type="submit" class="btn add-to-cart-btn">Agregar al carrito</button>
                 </form>
@@ -302,6 +391,7 @@
         </div>
 
     </div>
+
 
     <div class="payment-methods">
         <p>Opciones de pago:</p>
@@ -315,15 +405,32 @@
         <img src="https://www.bximpresiondigital.com/wp-content/uploads/2018/09/efecty.png" alt="Efecty">
     </div>
 
-    <div id="opiniones">
-        <h2>Opiniones del Producto:</h2>
-        <div class="opinion">
-            <strong>Usuario1</strong>
-            <p>Me encanta este producto, funciona muy bien.</p>
-            <p class="usefulness">¿Te fue útil esta opinión? Sí/No</p>
-        </div>
-    </div>
-
+    <div id="rating-system">
+        <h2>Calificación del Producto:</h2>
+        <form action="{{ route('opinions.store') }}" method="POST">
+            @csrf
+            <div class="rating-controls">
+                <input type="radio" name="rating" id="rating-1" value="1" required>
+                <label for="rating-1" class="control">🎮</label>
+    
+                <input type="radio" name="rating" id="rating-2" value="2">
+                <label for="rating-2" class="control">🎮🎮</label>
+    
+                <input type="radio" name="rating" id="rating-3" value="3">
+                <label for="rating-3" class="control">🎮🎮🎮</label>
+    
+                <input type="radio" name="rating" id="rating-4" value="4">
+                <label for="rating-4" class="control">🎮🎮🎮🎮</label>
+    
+                <input type="radio" name="rating" id="rating-5" value="5">
+                <label for="rating-5" class="control">🎮🎮🎮🎮🎮</label>
+            </div>
+            <textarea name="comment" placeholder="Deja tu opinión aquí" required></textarea>
+            <input type="hidden" name="product_id" value="{{ $product->id }}">
+            <button type="submit">Enviar Opinión</button>
+        </form>
+    </div>    
+    
 </body>
 </html>
 @endsection

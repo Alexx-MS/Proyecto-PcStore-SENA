@@ -13,8 +13,11 @@
             <nav class="admin-nav">
                 <ul>
                     <li><a href="{{ route('home') }}">Inicio</a></li>
-                    <li><a href="{{ route('profile') }}">Perfil</a></li>
-                    <li><a href="{{ route('logout') }}">Cerrar Sesión</a></li>
+                    <li><a href="{{ route('profile')}}">Perfil</a></li>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit">Salir</button>
+                    </form>
                 </ul>
             </nav>
         </div>

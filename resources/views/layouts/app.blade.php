@@ -43,22 +43,17 @@
             
             @auth
                 @if (auth()->user()->user_type === 'ADMIN')
-                    <a href="{{ route('admin.dashboard') }}" class="btn btn-warning">Administrar Tienda</a>
+                    <a href="{{ route('profile') }}" class="btn btn-warning">⚙🤴</a>
+                
+                @elseif (auth()->user()->user_type === 'CLIENT')
+                    <div class="user-profile">
+                        <a href="{{ route('profile') }}" class="profile-btn btn btn-warning">
+                            👤 {{ auth()->user()->name }}
+                        </a>                        
+                    </div>
+                @else
+                    <a href="{{ route('login') }}" class="btn btn-primary">Iniciar sesión</a>
                 @endif
-        
-                <div class="user-profile">
-                    <button class="profile-btn">👤 {{ auth()->user()->name }}</button>
-                    <ul class="profile-menu">
-                        <li>
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <button type="submit">Salir</button>
-                            </form>
-                        </li>
-                    </ul>
-                </div>
-            @else
-                <a href="{{ route('login') }}" class="btn btn-primary">Iniciar sesión</a>
             @endauth
         </div>
         

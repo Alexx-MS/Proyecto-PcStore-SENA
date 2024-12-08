@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\cloudinary;
+use Carbon\Carbon;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\cloudinary;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -94,7 +97,19 @@ class ProductController extends Controller
 
     public function showToUser($slug) 
     {
+
         $product = Product::where('slug', $slug)->firstOrFail();
-        return view('products.showUser', compact('product'));
+
+        // Obtener las opiniones del producto
+        $opinions = $product->opinions; 
+
+        // Añadir el nombre del usuario a cada opinión
+        foreach ($opinions as $opinion) { 
+            $opinion->user_name = Auth::check() ? Auth::user()->full_name : 'Usuario Anónimo';
+            $opinion->date = Carbon::parse($opinion->date); // convertir la fecha
+        }
+
+        // Pasar el producto y las opiniones a la vista
+        return view('products.showUser', compact('product', 'opinions'));
     }
 }

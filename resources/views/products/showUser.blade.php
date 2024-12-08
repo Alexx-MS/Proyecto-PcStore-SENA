@@ -333,6 +333,68 @@
         button:hover {
             background-color: #0056b3;
         }
+
+    /* Estilos generales para la lista de opiniones */
+    #opinions-list {
+        margin-top: 20px;
+        font-family: Arial, sans-serif;
+    }
+
+    #opinions-list .opinion {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 15px;
+        background-color: #f9f9f9;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    #opinions-list .opinion p {
+        margin: 10px 0;
+    }
+
+    #opinions-list .opinion p strong {
+        color: #333;
+    }
+
+    /* Botón "¿Te resultó útil?" */
+    .useful-button {
+        display: inline-block;
+        padding: 8px 15px;
+        font-size: 14px;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    /* Estilo cuando no está marcado */
+    .useful-button:not(.marked) {
+        background-color: rgba(0, 0, 0, 0.1);
+        color: #333;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+    }
+
+    /* Estilo cuando está marcado */
+    .useful-button.marked {
+        background-color: #007bff; /* Azul bonito */
+        color: white;
+        border: 1px solid #0056b3;
+        box-shadow: 0 2px 4px rgba(0, 123, 255, 0.5);
+    }
+
+    /* Hover para los botones */
+    .useful-button:hover {
+        opacity: 0.9;
+        transform: scale(1.05);
+    }
+
+    /* Pequeña transición para el botón */
+    .useful-button {
+        transition: background-color 0.3s, color 0.3s, box-shadow 0.3s, transform 0.3s;
+    }
+
         
         
     </style>
@@ -406,7 +468,7 @@
     </div>
 
     <div id="rating-system">
-        <h2>Calificación del Producto:</h2>
+        <h2>Regálanos una opinión sobre este producto:</h2>
         <form action="{{ route('opinions.store') }}" method="POST">
             @csrf
             <div class="rating-controls">
@@ -430,6 +492,29 @@
             <button type="submit">Enviar Opinión</button>
         </form>
     </div>    
+
+    <div id="opinions-list">
+        <h3>Opiniones de usuarios:</h3>
+        @foreach ($product->opinions as $opinion)
+            <div class="opinion">
+                <p><strong>Usuario:</strong>{{ $opinion->user_name }}</p>
+                <p><strong>Calificación:</strong> 
+                    @for ($i = 1; $i <= $opinion->rating; $i++)
+                        🎮
+                    @endfor
+                </p>
+                <p><strong>Comentario:</strong> {{ $opinion->comment }}</p>
+                <p>
+                    <script src="{{ asset('js/usefulness.js') }}"></script>
+                    <button class="useful-button {{ $opinion->usefulness ? 'marked' : '' }}" data-id="{{ $opinion->id }}">
+                        {{ $opinion->usefulness ? 'Ya marcaste como útil' : '¿Te resultó útil?' }}
+                    </button>
+                    
+                </p>
+                <p><small>Fecha: {{ $opinion->date->format('d/m/Y') }}</small></p>
+            </div>
+        @endforeach
+    </div>
     
 </body>
 </html>

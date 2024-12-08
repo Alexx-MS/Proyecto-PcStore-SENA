@@ -21,6 +21,9 @@ class OpinionController extends Controller
 
         public function store(Request $request, Product $product)
     {
+        // Cargar el producto 
+        $product = Product::findOrFail($request->product_id);
+        
         // Validación de los datos
         $request->validate([
             'rating' => 'nullable|integer|between:1,5', // Calificación opcional, si se incluye debe estar entre 1 y 5
@@ -38,7 +41,7 @@ class OpinionController extends Controller
         ]);
 
         // Redirigir o devolver una respuesta
-        return redirect()->route('products.show', $product)->with('success', 'Opinión agregada');
+        return redirect()->back()->with('success', '¡Tu opinión ha sido registrada 😉!');
     }
 
 
@@ -58,7 +61,7 @@ class OpinionController extends Controller
             'product_id' => 'required|exists:products,id',
             'rating' => 'required|integer|min:1|max:5',
             'comment' => 'required',
-            'date' => 'required|date',
+            'date' => now(),
             'usefulness' => 'required|integer|min:0',
         ]);
 
@@ -72,4 +75,15 @@ class OpinionController extends Controller
         $opinion->delete();
         return redirect()->route('opinions.index')->with('success', 'Opinion deleted successfully.');
     }
+
+    // Metodo para manejar los clicks de la utilidad(usefulness)
+    public function toggleUseful(Opinion $opinion)
+    {
+        // Cambia el valor de usefulness al opuesto
+        $opinion->usefulness = !$opinion->usefulness;
+        $opinion->save();
+
+        return response()->json(['success' => true, 'new_value' => $opinion->usefulness]);
+    }
+
 }

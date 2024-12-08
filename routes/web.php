@@ -53,6 +53,8 @@ Route::get('/product/{slug}', [ProductController::class, 'showToUser'])
 
 // Rutas de Opiniones(Opinions)
 Route::resource('opinions', OpinionController::class);
+Route::post('/opinions/{opinion}/toggle-useful', [OpinionController::class, 'toggleUseful'])->name('opinions.toggle-useful');
+
 
 // Rutas de Detalles(Details)
 Route::resource('details', DetailController::class);

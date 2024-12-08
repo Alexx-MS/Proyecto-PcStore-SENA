@@ -78,7 +78,7 @@ class CartController extends Controller
             'status' => 'pendiente',
             'date_time' => now(),
             'content' => json_encode($cartItems),
-            'address' => $request->address,
+            $request->address ? $request->address : 'Dirección no proporcionada',
             'estimated_delivery_date' => now()->addDays(2),
         ]);
 

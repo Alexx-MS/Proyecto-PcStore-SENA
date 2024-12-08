@@ -1,0 +1,102 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+/* Títulos */
+h1 {
+    color: #007bff; /* Color principal */
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Tabla */
+.table {
+    background-color: #ffffff; /* Fondo blanco para la tabla */
+    border-collapse: separate;
+    border-spacing: 0;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.table th {
+    background-color: #f8f9fa; /* Fondo claro para el encabezado */
+    color: #333;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: bold;
+}
+
+.table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.table-bordered {
+    border: 1px solid #dee2e6;
+}
+
+.table-bordered th, 
+.table-bordered td {
+    border: 1px solid #dee2e6;
+}
+
+/* Resaltar filas al pasar el mouse */
+.table tbody tr:hover {
+    background-color: #f2f2f2;
+}
+
+/* Botón de pago */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+    color: #ffffff;
+}
+
+/* Contenedor */
+.container {
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Total */
+h3 {
+    font-size: 24px;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Espaciado y alineación */
+.my-5 {
+    margin-top: 3rem !important;
+    margin-bottom: 3rem !important;
+}
+
+.mt-4 {
+    margin-top: 1.5rem !important;
+}
+
+.d-flex {
+    display: flex !important;
+}
+
+.justify-content-between {
+    justify-content: space-between !important;
+}
+
+.align-items-center {
+    align-items: center !important;
+}

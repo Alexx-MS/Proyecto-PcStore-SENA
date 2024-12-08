@@ -79,22 +79,24 @@ class CartController extends Controller
             'date_time' => now(),
             'content' => json_encode($cartItems),
             'address' => $request->address,
-            'estimated_delivery_date' => now()->addDays(7), // Se puede ajustar a tu preferencia
+            'estimated_delivery_date' => now()->addDays(2),
         ]);
 
         // Guardar detalles de la orden
         foreach ($cartItems as $productId => $item) {
             Detail::create([
                 'quantity' => $item['quantity'],
-                'observations' => null, // Puedes permitir que el usuario agregue observaciones
+                'observations' => null,
                 'order_id' => $order->id,
                 'product_id' => $productId,
-                'payment_id' => null, // Será asignado después de procesar el pago
+                'payment_id' => null, // Será asignado después del pago
             ]);
         }
 
-        return redirect()->route('payments.create', ['orderId' => $order->id]);
+        // Redirigir a la creación del pago
+        return redirect()->route('payment.create', ['orderId' => $order->id]);
     }
+
 
     // Crear un pago para la orden
     public function createPayment(Request $request, $orderId)

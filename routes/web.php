@@ -15,7 +15,7 @@ use App\Http\Middleware\AdminMiddleware;
 
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
-})->middleware(['auth', 'admin'])->name('admin.dashboard');
+})->middleware(['auth', 'admin'])->name('admin.dashboard'); 
 
 Route::get('/profile', function () {
     return view('profile');
@@ -67,26 +67,21 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
 // Rutas de Carrito (Cart)
+// Rutas relacionadas con el carrito de compras
 Route::middleware(['auth'])->group(function () { 
 
     Route::get('/cart/count', [CartController::class, 'getCartCount'])->name('cart.count');
-
-    // Mostrar el carrito de compras
     Route::get('/cart', [CartController::class, 'showCart'])->name('cart.show');
-
-    // Agregar productos al carrito
     Route::post('/cart/add/{productId}', [CartController::class, 'addToCart'])->name('cart.add');
-
-    // Eliminar productos del carrito
     Route::delete('/cart/remove/{productId}', [CartController::class, 'removeFromCart'])->name('cart.remove');
-
-    // Checkout - Crear orden
     Route::get('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
-
-    // Crear pago
-    Route::get('/payment/create/{orderId}', [CartController::class, 'createPayment'])->name('payment.create');
-
+    
+    // Rutas relacionadas con el pago
+    Route::get('/payment/create/{orderId}', [PaymentController::class, 'createPayment'])->name('payment.create');
+    Route::get('/payment-status', [PaymentController::class, 'executePayment'])->name('payment.status');
+    Route::get('/payment-cancel', [PaymentController::class, 'cancelPayment'])->name('payment.cancel');
 });
+
 
 
 

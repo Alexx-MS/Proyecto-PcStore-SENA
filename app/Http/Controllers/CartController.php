@@ -62,6 +62,7 @@ class CartController extends Controller
     // Procesar el pedido y redirigir a la página de pago
     public function checkout(Request $request)
     {
+    
         $cartItems = session('cart', []);
 
         if (count($cartItems) === 0) {
@@ -69,7 +70,7 @@ class CartController extends Controller
         }
 
         // Crear una nueva orden
-        $order = Order::create([
+        $order = Order::create([ 
             'user_id' => Auth::id(),
             'quantity' => collect($cartItems)->sum('quantity'),
             'total_amount' => collect($cartItems)->sum(function ($item) {
@@ -78,7 +79,7 @@ class CartController extends Controller
             'status' => 'pendiente',
             'date_time' => now(),
             'content' => json_encode($cartItems),
-            $request->address ? $request->address : 'Dirección no proporcionada',
+            'address' => $request->address ? $request->address : 'Dirección no proporcionada',
             'estimated_delivery_date' => now()->addDays(2),
         ]);
 

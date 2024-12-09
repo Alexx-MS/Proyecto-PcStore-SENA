@@ -113,3 +113,10 @@ h1, h2 {
 .presupuesto button:hover {
     background-color: #b71c1c;
 }
+
+.d-block w-50 img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover; /* Ajusta la imagen */
+}
+

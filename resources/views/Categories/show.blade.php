@@ -141,6 +141,7 @@
                         <div class="product-info">
                             <!-- Nombre del producto -->
                             <h3 class="product-name">{{ $product->name }}</h3>
+                            
                             <!-- Rating del producto -->
                             <div class="product-rating">
                                 @php

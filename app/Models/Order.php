@@ -31,7 +31,7 @@ class Order extends Model
         return $this->hasMany(Detail::class);
     }
 
-    // Relación con Payment
+    // Relación con Pagos (Payments)
     public function payment()
     {
         return $this->belongsTo(Payment::class);

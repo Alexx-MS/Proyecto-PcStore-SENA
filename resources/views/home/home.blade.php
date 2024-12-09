@@ -3,50 +3,49 @@
 @section('content')
 <head>
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
 <div class="content">
-    <h1>Nuestros Productos Destacados</h1>
-    <div class="products">
-        <!-- Producto 1 -->
-        <a href="Product1.html" class="product">
-            <img src="https://cdnx.jumpseller.com/tienda-gamer-medellin/image/47208261/1024.png?1711994221" alt="Nvidia Geforce RTX 4090">
-            <p>Nvidia Geforce RTX 4090</p>
-            <div class="price">$8.990.000</div>
-        </a>
-
-        <!-- Producto 2 -->
-        <a href="Product2.html" class="product">
-            <img src="https://dlcdnwebimgs.asus.com/gain/DBFFDF8F-DA7F-442E-A293-D6EF8514254A" alt="ASUS ROG Zenith Extreme X399">
-            <p class="product-name">ASUS ROG Zenith Extreme X399</p>
-            <div class="price">$1.990.000</div>
-        </a>
-
-        <!-- Producto 3 -->
-        <a href="Product3.html" class="product">
-            <img src="https://static.wixstatic.com/media/a9655c_542c3235fee046629cb8bdf49f1a455e~mv2.png/v1/fill/w_980,h_980,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/a9655c_542c3235fee046629cb8bdf49f1a455e~mv2.png" alt="Intel Core i9 13900KS">
-            <p class="product-name">Intel Core i9 13900KS</p>
-            <div class="price">$2.950.000</div>
-        </a>
-
-        <!-- Producto 4 -->
-        <a href="Product4.html" class="product">
-            <img src="https://mundocomputo.com/web/image/product.template/950/image_1024?unique=0b0eafe" alt="Logitech G Series G502">
-            <p class="product-name">Logitech G Series G502</p>
-            <div class="price">$163.990</div>
-        </a>
-
-        <!-- Producto 5 -->
-        <a href="Product5.html" class="product">
-            <img src="https://panamericana.vtexassets.com/arquivos/ids/392175-800-auto?v=637565356191070000&width=800&height=auto&aspect=true" alt="Mouse Inalámbrico HP Z3700">
-            <p class="product-name">Mouse Inalámbrico HP Z3700</p>
-            <div class="price">$163.990</div>
-        </a>
+    <h1>Productos Mejor Calificados</h1>
+    <div id="topRatedCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            @foreach($topRatedProducts as $index => $product)
+                <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
+                    <div class="d-flex justify-content-center align-items-center flex-column">
+                        <img src="{{ $product->image }}" class="d-block w-50" alt="{{ $product->name }}">
+                        <div class="carousel-caption d-md-block">
+                            <h5>{{ $product->name }}</h5>
+                            <p class="price">${{ number_format($product->price, 2) }}</p>
+                            <p class="rating">
+                                Calificación: 
+                                @if ($product->opinions_avg_rating)
+                                    {{ number_format($product->opinions_avg_rating, 1) }} / 5
+                                @else
+                                    Sin calificaciones aún
+                                @endif
+                            </p>
+                            <a href="{{ route('products.showUser', $product->slug) }}" class="btn btn-primary">Ver Producto</a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#topRatedCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#topRatedCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+        </button>
     </div>
 </div>
 
-<div class="presupuesto">
+<div class="presupuesto mt-5">
     <h2>¡Nos adaptamos a tu presupuesto!</h2>
     <p>Indica tu presupuesto y encuentra lo que necesitas</p>
     <button>Inicia tu presupuesto</button>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 @endsection

@@ -28,6 +28,8 @@ Route::get('/profile/edit', function () {
 
 // Rutas Home
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/top-rated-products', [HomeController::class, 'getTopRatedProducts'])->name('home.topRated');
+
 
 
 // Rutas de Usuarios(Users)

@@ -9,7 +9,7 @@ class Payment extends Model
 {
     use HasFactory;
     
-      // Relación con Order
+      // Relación uno a uno con Pedidos (Orders)
       public function order()
       {
           return $this->hasOne(Order::class);

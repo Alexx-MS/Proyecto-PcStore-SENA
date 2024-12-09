@@ -1,0 +1,99 @@
+:root {
+    --primary-red: #B22222;
+    --dark-black: #121212;
+    --light-black: #1E1E1E;
+    --text-white: #F4F4F4;
+    --hover-red: #8B0000;
+    --border-color: #333333;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--dark-black);
+    color: var(--text-white);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 600px;
+    width: 100%;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--light-black);
+    border-radius: 12px;
+    box-shadow: 0 15px 30px rgba(178, 34, 34, 0.2);
+}
+
+.form-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-red);
+    text-align: center;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-white);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--dark-black);
+    color: var(--text-white);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.form-group textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.action-link {
+    display: inline-block;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    background-color: var(--primary-red);
+    color: var(--text-white);
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+}
+
+.action-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin: 1rem;
+        padding: 1rem;
+    }
+}

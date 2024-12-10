@@ -12,6 +12,9 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LoginController;
 use App\Http\Middleware\AdminMiddleware;
+use App\Http\Controllers\SearchController;
+use App\Http\Controllers\BudgetController;
+use App\Http\Controllers\PCConfiguratorController;
 
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
@@ -77,12 +80,32 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/cart/add/{productId}', [CartController::class, 'addToCart'])->name('cart.add');
     Route::delete('/cart/remove/{productId}', [CartController::class, 'removeFromCart'])->name('cart.remove');
     Route::get('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
+
+
+    Route::get('/configurator', [PCConfiguratorController::class, 'index'])->name('configurator.index');
+    Route::post('/configurador/create', [PCConfiguratorController::class, 'create'])->name('pcconfigurator.create');
+
     
     // Rutas relacionadas con el pago
     Route::get('/payment/create/{orderId}', [PaymentController::class, 'createPayment'])->name('payment.create');
     Route::get('/payment-status', [PaymentController::class, 'executePayment'])->name('payment.status');
     Route::get('/payment-cancel', [PaymentController::class, 'cancelPayment'])->name('payment.cancel');
 });
+
+// routes/web.php
+
+
+
+Route::get('search', [SearchController::class, 'search'])->name('search');
+
+
+
+
+
+
+
+
+
 
 
 

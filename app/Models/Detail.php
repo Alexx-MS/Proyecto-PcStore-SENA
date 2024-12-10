@@ -10,7 +10,11 @@ class Detail extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['quantity', 'observations'];
+    protected $fillable = [
+        'order_id',
+        'quantity',
+        'observations',
+    ];
 
     public function order () 
     {

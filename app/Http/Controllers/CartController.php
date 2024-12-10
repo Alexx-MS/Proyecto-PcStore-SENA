@@ -27,7 +27,7 @@ class CartController extends Controller
     // Agregar un producto al carrito
     public function addToCart(Request $request, $productId)
     {
-        $product = Product::findOrFail($productId);
+        $product = Product::findOrFail($productId); // Obtenemos el producto desde la base de datos
         $cart = session('cart', []);
 
         // Verificar si el producto ya existe en el carrito
@@ -40,6 +40,7 @@ class CartController extends Controller
                 'name' => $product->name,
                 'price' => $product->price,
                 'quantity' => $request->quantity,
+                'image' => $product->image ?? 'images/no-image.png',// Obtenemos directamente la imagen del modelo Product
             ];
         }
 
@@ -62,7 +63,6 @@ class CartController extends Controller
     // Procesar el pedido y redirigir a la página de pago
     public function checkout(Request $request)
     {
-    
         $cartItems = session('cart', []);
 
         if (count($cartItems) === 0) {
@@ -70,7 +70,7 @@ class CartController extends Controller
         }
 
         // Crear una nueva orden
-        $order = Order::create([ 
+        $order = Order::create([
             'user_id' => Auth::id(),
             'quantity' => collect($cartItems)->sum('quantity'),
             'total_amount' => collect($cartItems)->sum(function ($item) {
@@ -97,7 +97,6 @@ class CartController extends Controller
         // Redirigir a la creación del pago
         return redirect()->route('payment.create', ['orderId' => $order->id]);
     }
-
 
     // Crear un pago para la orden
     public function createPayment(Request $request, $orderId)
@@ -133,12 +132,12 @@ class CartController extends Controller
         return redirect()->route('orders.history')->with('success', 'El pago fue exitoso y la orden ha sido procesada.');
     }
 
-        public function getCartCount()
+    // Obtener la cantidad de productos en el carrito
+    public function getCartCount()
     {
         $cart = session('cart', []);
         $cartCount = collect($cart)->sum('quantity'); // Suma todas las cantidades en el carrito
 
         return response()->json(['cartCount' => $cartCount]);
     }
-
 }

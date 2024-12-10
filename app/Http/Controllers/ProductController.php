@@ -38,7 +38,7 @@ class ProductController extends Controller
             'technical_specifications' => 'required',
             'brand' => 'required',
             'category_id' => 'required|exists:categories,id',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,|max:4000', // Validación de la imagen
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,|max:10000', // Validación de la imagen
         ]);
 
         // Subir la imagen a Cloudinary si existe

@@ -21,6 +21,7 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'user_id' => $user->id,
             'quantity' => 'required|integer',
             'total_amount' => 'required|integer',
             'status' => 'required|string|max:255',

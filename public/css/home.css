@@ -1,122 +1,208 @@
-/* Reset de márgenes y padding */
-* {
+/* Asegurar que html y body ocupen toda la pantalla */
+html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
-/* Fuentes globales */
+/* Paleta de colores */
+:root {
+    --deep-black: #121212;
+    --soft-black: #1E1E1E;
+    --primary-red: #B22222;
+    --dark-red: #8B0000;
+    --light-text: #F5F5F5;
+    --hover-red: #8B0000;
+}
+
+/* Estilo general del body */
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #141414;
-    color: #fff;
-    line-height: 1.6;
+    background-color: var(--deep-black);
+    color: var(--light-text);
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-h1, h2 {
-    font-weight: 700;
-}
-
-/* Estilos para el contenido principal */
-.content {
-    padding: 40px 20px;
+/* Estilo para el título principal */
+h1 {
     text-align: center;
+    color: var(--light-text);
+    font-size: 2.8em;
+    margin-bottom: 20px;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.8);
 }
 
-.content h1 {
-    font-size: 2.5rem;
-    color: #d32f2f;
-    margin-bottom: 40px;
+/* Estilo para el contenedor del carrusel */
+#topRatedCarousel {
+    max-width: 1600px;
+    margin: 80px auto;
+    background-color: var(--deep-black);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.products {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-    justify-items: center;
-}
-
-.product {
-    background-color: #1a1a1a;
+.carousel-inner {
     border-radius: 10px;
-    overflow: hidden;
-    transition: transform 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    width: 250px;
 }
 
-.product img {
-    width: 100%;
-    height: auto;
+.carousel-item {
+    text-align: center;
+    padding: 1rem;
+}
+
+.product-image {
+    max-width: 1400px;
+    max-height: 920px;
     object-fit: cover;
+    border-radius: 15px;
+    border: 2px solid #39394d;
+    background-color: #353030;
+    margin-bottom: 1rem;
 }
 
-.product p {
-    font-size: 1.1rem;
-    color: #fff;
-    padding: 10px;
-    background-color: #333;
-    margin: 0;
-}
-
-.product .price {
-    font-size: 1.2rem;
-    color: #d32f2f;
-    padding: 10px;
-    background-color: #1a1a1a;
+.product-info {
+    margin-top: 1rem;
     text-align: center;
-    font-weight: 500;
 }
 
-/* Efecto hover */
-.product:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
-}
-
-.presupuesto {
-    background-color: #333;
-    padding: 40px 20px;
-    margin-top: 40px;
-    text-align: center;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-.presupuesto h2 {
+.product-info h5 {
     font-size: 2rem;
-    color: #fff;
-    margin-bottom: 20px;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: var(--light-text);
 }
 
-.presupuesto p {
-    color: #ddd;
-    margin-bottom: 20px;
+.product-info .price {
+    color: var(--primary-red);
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
 }
 
-.presupuesto button {
-    background-color: #d32f2f;
-    color: #fff;
-    padding: 12px 30px;
+.product-info .rating {
+    font-size: 0.9rem;
+    color: #ccc;
+    margin-bottom: 0.5rem;
+}
+
+/* Botón de "Ver Producto" */
+.product-info .btn {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--primary-red);
     border: none;
     border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
+    color: var(--light-text);
     transition: background-color 0.3s ease;
 }
 
-.presupuesto button:hover {
-    background-color: #b71c1c;
+.product-info .btn:hover {
+    background-color: var(--dark-red);
 }
 
-.d-block w-50 img {
-    max-width: 100%;
-    height: auto;
-    object-fit: cover; /* Ajusta la imagen */
+/* Controles del carrusel */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(100%);
+    width: 2rem;
+    height: 2rem;
 }
 
+/* Estilo para la sección de presupuesto */
+.presupuesto {
+    text-align: center;
+    background: var(--soft-black);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 2rem auto;
+    max-width: 800px;
+}
+
+.presupuesto h2 {
+    color: var(--light-text);
+    margin-bottom: 1rem;
+}
+
+.presupuesto p {
+    color: #ccc;
+    margin-bottom: 1rem;
+}
+
+/* Botón estilizado */
+.btn-buscar {
+    display: inline-block;
+    background-color: var(--primary-red);
+    color: var(--light-text);
+    font-weight: bold;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.2rem;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin-top: 1rem;
+}
+
+/* Efecto hover */
+.btn-buscar:hover {
+    background-color: var(--dark-red);
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Sombra y transición */
+.btn-buscar:active {
+    transform: scale(0.95);
+}
+
+/* Estilo para los cuadros de botones */
+.button-section {
+    max-width: 1200px;
+    margin: 2rem auto;
+    text-align: center;
+}
+
+.action-button {
+    position: relative;
+    width: 100%;
+    padding: 40px;
+    font-size: 2rem;
+    color: var(--light-text);
+    text-decoration: none;
+    border-radius: 10px;
+    background-position: center;
+    background-size: cover;
+    margin-bottom: 20px;
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--soft-black);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Efecto hover */
+.action-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+/* Contenido del botón */
+.action-button h3, .action-button p {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+/* Sombra y texto */
+.action-button p {
+    font-size: 1.5rem;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+.action-button:hover p {
+    opacity: 1;
+}

@@ -27,9 +27,9 @@
             </div>
         @endif
 
-        <form method="POST" action="{{ route('logout') }}">
+        <form method="POST" action="{{ route('logout') }}" class="logout-form">
             @csrf
-            <button type="submit">Salir</button>
+            <button type="submit" class="logout-button">Cerrar Sesión</button>
         </form>
     </div>
 </div>

@@ -10,6 +10,7 @@ class Order extends Model
     use HasFactory;
 
     protected $fillable = [
+
         'quantity',
         'total_amount',
         'status',
@@ -17,7 +18,7 @@ class Order extends Model
         'content',
         'address',
         'estimated_delivery_date',
-        // 'user_id' // Descomentar si necesitas relación con usuario
+        'user_id' // Descomentar si necesitas relación con usuario
     ];
 
     public function user()

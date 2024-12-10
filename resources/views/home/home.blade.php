@@ -45,7 +45,7 @@
 <!-- Botones estilizados -->
 <div class="button-section">
     <!-- Botón Tarjetas Gráficas -->
-    <a href="http://127.0.0.1:8000/categories/tarjetas-graficas" class="action-button" style="background-image: url('https://asset.msi.com/resize/image/global/product/product_3_20171012153630_59df1b7ecd614.png62405b38c58fe0f07fcef2367d8a9ba1/400.png'); background-position: center;">
+    <a href="http://127.0.0.1:8000/categories/tarjeta-graficas" class="action-button" style="background-image: url('https://asset.msi.com/resize/image/global/product/product_3_20171012153630_59df1b7ecd614.png62405b38c58fe0f07fcef2367d8a9ba1/400.png'); background-position: center;">
         <div class="button-content">
             <h3>Mas Gráficos</h3>
             <p>Tarjetas Gráficas</p>

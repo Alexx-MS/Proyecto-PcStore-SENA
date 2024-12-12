@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+<head>
+    <link rel="stylesheet" href="{{ asset('css/cart/index.css') }}">
+</head>
+
 <div class="container">
     <h2>Carrito de Compras</h2>
 
@@ -8,22 +12,19 @@
         <div class="alert alert-danger">{{ session('error') }}</div>
     @endif
 
-    @if (count($cartItems) > 0)
+    @if (isset($cartItems) && count($cartItems) > 0)
         <div class="cart-grid">
             @foreach ($cartItems as $productId => $item)
                 <div class="product-card">
                     <!-- Imagen del producto -->
                     <div class="product-image">
-    @if (isset($item['image']))
-        
-
-        <img src="{{ $item['image'] }}" alt="{{ $item['name'] }}">
-    @else
-        <p>Imagen no encontrada</p>
-        <img src="{{ asset('images/no-image.png') }}" alt="Imagen no disponible">
-    @endif
-</div>
-
+                        @if (isset($item['image']))
+                            <img src="{{ $item['image'] }}" alt="{{ $item['name'] }}">
+                        @else
+                            <p>Imagen no encontrada</p>
+                            <img src="{{ asset('images/no-image.png') }}" alt="Imagen no disponible">
+                        @endif
+                    </div>
 
                     <div class="product-info">
                         <!-- Nombre del producto -->
@@ -66,11 +67,6 @@
     <div class="right-side">
       <div class="new">Pagar con Paypal</div>
     </div>
-  </div>
-</a>
-
-</div>
-        </div>
     @else
         <p class="no-products">No hay productos en el carrito.</p>
     @endif
